@@ -1,0 +1,1 @@
+{"ast":null,"code":"import swal from 'sweetalert2';\nexport const successAlert = (title, textMessage) => {\n  swal.fire({\n    title: title,\n    text: textMessage,\n    buttonsStyling: false,\n    customClass: {\n      confirmButton: \"btn btn-fill btn-success\"\n    },\n    icon: \"success\"\n  });\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

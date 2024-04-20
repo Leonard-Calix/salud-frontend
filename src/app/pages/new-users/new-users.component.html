@@ -1,0 +1,67 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Crear Usuarios</h4>
+                    </div>
+                    <div class="content">
+                        <form [formGroup]="formGruopUser" (submit)="create()" >
+                            <div class="row">
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nombre de Usuario</label>
+                                        <input type="text" formControlName="userName" class="form-control" placeholder="Nombre de Usuario" value="usuario">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Correo Electronico</label>
+                                        <input type="email" formControlName="email"  class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Primer Nombre</label>
+                                        <input type="text" class="form-control" formControlName="firstName"  placeholder="Primer Nombre" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Segundo Nombre</label>
+                                        <input type="text" class="form-control" formControlName="lastName"  placeholder="Segundo Nombre" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <input type="password" formControlName="password"  class="form-control" placeholder="Contraseña" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Confirmar contraseña</label>
+                                        <input type="password" formControlName="confirmation" class="form-control" placeholder="Confirmar contraseña" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>

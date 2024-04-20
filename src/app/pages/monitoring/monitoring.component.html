@@ -1,0 +1,151 @@
+<div class="main-content">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Ficha de Monitoreo de Organizaciones Locales</h4>
+                        <p class="category"></p>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+
+                                    <div class="card-0">
+                                        <div class="header">
+                                            <legend>Datos Generales</legend>
+                                        </div>
+                                        <div class="content">
+                                            <div class="form-horizontal">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label"
+                                                            style="text-align: left;">Fecha Monitoreo</label>
+                                                        <div class="col-sm-10">
+                                                            <input [(ngModel)]="dateMonitory" type="date"
+                                                                class="form-control datetimepicker"
+                                                                placeholder="Fecha Monitoreo" />
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label style="text-align: left;"
+                                                            class="col-sm-2 control-label">Departamento</label>
+                                                        <div class="col-sm-10">
+                                                            <select class="form-control"
+                                                                (change)="getMunicipalitiesByDeparment($event)"
+                                                                placeholder="Departamento">
+                                                                <option value="">Seleccione un Departamento</option>
+                                                                <option *ngFor="let item of departments"
+                                                                    value="{{ item.id }}">
+                                                                    {{ item.nameD }} </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label style="text-align: left;"
+                                                            class="col-sm-2 control-label">Municipio</label>
+                                                        <div class="col-sm-10">
+                                                            <select (change)="getMunicipalities($event)"
+                                                                class="form-control" id="municipio"
+                                                                placeholder="municipio">
+                                                                <option value="">Seleccione un Municipio</option>
+                                                                <option *ngFor="let item of municipalities"
+                                                                    value="{{ item.id }}"> {{ item.nameM }} </option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label style="text-align: left;"
+                                                            class="col-sm-2 control-label">Comunidad</label>
+                                                        <div class="col-sm-10">
+                                                            <select [(ngModel)]="communityId" class="form-control"
+                                                                id="comunidad" placeholder="comunidad">
+                                                                <option value="0">Seleccione un Comunidad</option>
+                                                                <option *ngFor="let item of communities"
+                                                                    value="{{ item.id }}">{{ item.nameC }}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label style="text-align: left;"
+                                                            class="col-sm-2 control-label">Recomendacion general</label>
+                                                        <div class="col-sm-10">
+                                                            <textarea [(ngModel)]="generalRecommendation"
+                                                                class="form-control valid" rows="6"
+                                                                placeholder="Ingrese su recomendacione general"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                
+                                                <br>
+
+                                                <p *ngIf="loadingQuestions">Loading</p>
+
+                                                <form *ngIf="!loadingQuestions" [formGroup]="formPoll"
+                                                    (ngSubmit)="save()">
+                                                    <legend>Monitoreo de Organizaciones Locales</legend>
+                                                    <div *ngFor="let item of dataGroup" class="form-group">
+                                                        <label class="col-sm-10 control-label"
+                                                            style="text-align: left;"> {{ item.descripcion }} </label>
+                                                        <div class="col-sm-2">
+                                                            <label class="radio-inline">
+                                                                <input [formControlName]=item.key type="radio"
+                                                                    name="{{ item.key }}" id="{{ item.key }}"
+                                                                    [value]="true" />SI
+                                                            </label>
+                                                            <label class="radio-inline">
+                                                                <input [formControlName]=item.key type="radio"
+                                                                    name="{{ item.key }}" id="{{ item.key }}"
+                                                                    [value]="false" />NO
+                                                            </label>
+                                                        </div>
+                                                        <div *ngIf="item.recommendation" class="col-sm-12">
+                                                            <fieldset>
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-12">
+                                                                        <textarea [formControlName]=item.key2
+                                                                            class="form-control valid" rows="6"
+                                                                            placeholder="Ingrese sus recomendaciones"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                                <fieldset *ngIf="!loadingQuestions">
+                                                    <div class="center-btn">
+                                                        <button #btnSave (click)="save()" [disabled]="formPoll.invalid"
+                                                            class="btn btn-success btn-fill btn-wd">Guardar</button>
+                                                    </div>
+                                                </fieldset>
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card -->
+                                </div> <!-- end col-md-12 -->
+                            </div>
+                            <div class="col-md-6 col-md-offset-1">
+                                <div id="worldMap" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
