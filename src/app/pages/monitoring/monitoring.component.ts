@@ -12,6 +12,7 @@ import { DepartmentService } from 'app/services/department.service';
 import { MunicipalitiesService } from 'app/services/municipalities.service';
 import { PollService } from 'app/services/poll.service';
 import { QuestionService } from 'app/services/question.service';
+
 declare var $: any;
 
 interface questionData {
@@ -21,6 +22,17 @@ interface questionData {
     recommendation: Boolean,
     key: string,
     key2: string,
+}
+
+declare interface User {
+    text?: string;
+    email?: string; //  must be valid email format
+    password?: string; // required, value must be equal to confirm password.
+    confirmPassword?: string; // required, value must be equal to password.
+    number?: number; // required, value must be equal to password.
+    url?: string;
+    idSource?: string;
+    idDestination?: string;
 }
 
 @Component({
@@ -57,7 +69,7 @@ export class MonitoringComponent implements OnInit {
     ) {
 
     }
-
+    public typeValidation: User;
     ngOnInit() {
         //this.inicialiceTable();
 
@@ -272,5 +284,11 @@ export class MonitoringComponent implements OnInit {
 
         this.formPoll = this.formBuilder.group(group);
     }
+    save2(model: User, isValid: boolean) {
+        // call API to save customer
+            if(isValid){
+                console.log(model, isValid);
+            }
+        }
 
 }

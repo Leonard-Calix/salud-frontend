@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Ficha de Monitoreo de Organizaciones Locales</h4>
+                        <h4 class="title">Seguimiento Y Monitoreo de Desarrollo Infantil Temprano</h4>
                         <p class="category"></p>
                     </div>
                     <div class="content">
@@ -67,11 +67,11 @@
                                                 <fieldset>
                                                     <div class="form-group">
                                                         <label style="text-align: left;"
-                                                            class="col-sm-2 control-label">Comunidad</label>
+                                                            class="col-sm-2 control-label">Aldea</label>
                                                         <div class="col-sm-10">
                                                             <select [(ngModel)]="communityId" class="form-control"
                                                                 id="comunidad" placeholder="comunidad">
-                                                                <option value="0">Seleccione un Comunidad</option>
+                                                                <option value="0">Seleccione una Aldea</option>
                                                                 <option *ngFor="let item of communities"
                                                                     value="{{ item.id }}">{{ item.nameC }}</option>
                                                             </select>
@@ -81,15 +81,98 @@
 
                                                 <fieldset>
                                                     <div class="form-group">
-                                                        <label style="text-align: left;"
-                                                            class="col-sm-2 control-label">Recomendacion general</label>
-                                                        <div class="col-sm-10">
-                                                            <textarea [(ngModel)]="generalRecommendation"
-                                                                class="form-control valid" rows="6"
-                                                                placeholder="Ingrese su recomendacione general"></textarea>
-                                                        </div>
+                                                      <label class="col-sm-2 control-label" style="text-align: left;">Nombre Voluntario</label>
+                                                      <div class="col-sm-4">
+                                                        <textarea [(ngModel)]="typeValidation.number" class="form-control" rows="2" placeholder="Ingrese Nombre Completo"></textarea>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label" style="text-align: left;">Numero de Familias Priorizadas</label>
+                                                      <div class="col-sm-4">
+                                                        <textarea [(ngModel)]="typeValidation.number" class="form-control" rows="2" placeholder="Ingrese Nombre Completo"></textarea>
+                                                      </div>
                                                     </div>
-                                                </fieldset>
+                                                  </fieldset>
+                                                  
+                                                  <fieldset>
+                                                    <div class="form-group" style="display: flex; align-items: flex-start;">
+                                                      <label class="col-sm-2 control-label">Numero familia Atendida:</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">Programada</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">Ejecutada</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+                                                  
+                                                  <fieldset>
+                                                    <div class="form-group" style="display: flex; align-items: flex-start;">
+                                                      <label class="col-sm-3 control-label bold">Cuidador Primario Parentesco:</label>
+                                                      <label class="col-sm-1 control-label">Madre</label>
+                                                      <div class="col-sm-1">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-1 control-label">Padre</label>
+                                                      <div class="col-sm-1">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-1 control-label">Abuela</label>
+                                                      <div class="col-sm-1">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+                                                  
+                                                  <fieldset>
+                                                    <div class="form-group" style="display: flex; align-items: flex-start;">
+                                                      <label class="col-sm-3 control-label bold">Embarazada Captada en:</label>
+                                                      <label class="col-sm-2 control-label">Primeras 12 Semanas de Embarazo</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">Despues de las 12 semanas de Embarazo</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+
+                                                  <fieldset>
+                                                    <div class="form-group" style="display: flex; align-items: flex-start;">
+                                                      <label class="col-sm-3 control-label bold">Parto Atendido en:</label>
+                                                      <label class="col-sm-2 control-label">Hospital</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">Comunidad</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">Su primera consulta en los primeros 7 dias despues del parto</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                    </div>
+                                                  </fieldset>
+                                                  
+                                                  <fieldset>
+                                                    <div class="form-group" style="display: flex; align-items: flex-start;">
+                                                      <label class="col-sm-3 control-label bold">Niños Y Niñas Menores de 6 meses de Edad que Recibe Lactancia Exclusiva:</label>
+                                                      <label class="col-sm-2 control-label">Si</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                      <label class="col-sm-2 control-label">No</label>
+                                                      <div class="col-sm-2">
+                                                        <input class="form-control" type="number" [ngModel]="typeValidation.number" required>
+                                                      </div>
+                                                                                                            
+                                                    </div>
+                                                  </fieldset>
                                                 
                                                 <br>
 

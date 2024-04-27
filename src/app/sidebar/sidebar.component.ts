@@ -27,12 +27,13 @@ export const ROUTES: RouteInfo[] = [
         type: 'link',
         icontype: 'pe-7s-graph'
     },
-   /* {
+    {
         path: '/monitoring',
-        title: 'Monitoreo',
+        title: 'Ficha',
         type: 'link',
-        icontype: 'pe-7s-graph'
+        icontype: 'pe-7s-note2'
     },
+    /*
     {
         path: '/maintenance',
         title: 'Mantenimiento',
@@ -44,9 +45,9 @@ export const ROUTES: RouteInfo[] = [
         path: '/users-list',
         title: 'Usuarios',
         type: 'link',
-        icontype: 'pe-7s-graph'
+        icontype: 'pe-7s-users'
     },
-/*
+
     {
         path: '/components',
         title: 'Components',
@@ -62,7 +63,7 @@ export const ROUTES: RouteInfo[] = [
             { path: 'typography', title: 'Typography', ab: 'T' }
         ]
     },
-    */
+    
     /*
     {
         path: '/forms',
