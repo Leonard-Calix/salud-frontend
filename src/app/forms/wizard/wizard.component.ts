@@ -113,7 +113,7 @@ export class WizardComponent implements OnInit{
           onLast: function(tab,navigation,index){
 
               //here you can do something, sent the form to server via ajax and show a success message with swal
-              swal.fire("Good job!", "You clicked the finish button!", "success");
+              swal.fire("Buen Trabajo", "Estas Seguro de Guardar", "success");
           }
 
       });
