@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Question } from 'app/interfaces/Question.interface';
-import { QuestionService } from 'app/services/question.service';
-
-declare var $: any;
-
-declare interface DataTable {
-  headerRow: string[];
-  footerRow: string[];
-  dataRows: string[][];
-}
+import { Component, OnInit, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Community } from 'app/interfaces/Community.interface';
+import { Department } from 'app/interfaces/Department.interface';
+import { Municipality } from 'app/interfaces/Municipality.interface';
+import { CommunitiesService } from 'app/services/communities.service';
+import { DepartmentService } from 'app/services/department.service';
+import { MunicipalitiesService } from 'app/services/municipalities.service';
 
 @Component({
   selector: 'app-maintenance',
@@ -17,102 +15,88 @@ declare interface DataTable {
 })
 
 export class MaintenanceComponent implements OnInit {
-  public dataTable: DataTable;
-  questions: Question[] = [];
 
-  constructor(private questionService: QuestionService) { }
+  step: string = ''
+  formTbl1: FormGroup;
+  loading: boolean = true;
+  validForm: boolean = true;
+  departments: Department[] = [];
+  municialities: Municipality[] = [];
+  communities: Community[] = [];
 
-  ngOnInit() {
+  communityId: number = 0;
+  municipalityId: number = 0;
+  departmentId: number = 0;
+  familiapriorizada: number = 0;
 
-    this.loadTable();
+  departmetService = inject(DepartmentService);
+  municipalitiesService = inject(MunicipalitiesService);
+  communitiesService = inject(CommunitiesService);
+  router = inject(Router);
 
 
-    this.getQuestions();
+  constructor() { }
 
+  ngOnInit(): void {
+    this.getDepartements();
+
+    this.loading = false;
   }
 
 
-  getQuestions() {
-    this.questionService.getAll().subscribe((resp: any) => {
+  getDepartements() {
+    this.departmetService.getAll().subscribe((response: any) => this.departments = response.data)
+  }
 
-      let dataTemp: string[] = [];
-      let rows: string[][] = [];
+  getMunicipalitiesByDeparment(event: any) {
+    let departmentId: number = event.target.value;
+    this.communities = [];
+    this.municialities = [];
 
-      resp.data.forEach((element: Question) => {
+    this.departmentId = Number(departmentId);
 
-        if (element.description) {
-          dataTemp.push(element.description)
-        }
+    this.municipalitiesService.getByDepartmentId(departmentId).subscribe(((res: any) => {
+      this.municialities = res.data;
+    }));
+  }
 
-        if (element.type) {
-          dataTemp.push(element.type)
-        }
+  getMunicipalities(event: any) {
+    let municipalityId: number = event.target.value;
 
-        if (element?.state) {
-          dataTemp.push(element.state ? 'Activo' : 'Inactivo')
-        }
+    this.municipalityId = Number(municipalityId);
 
-        if (element.recommendation || !element.recommendation) {
-          dataTemp.push(element.recommendation ? 'Si' : 'No')
-        }
-
-        rows.push(dataTemp);
-        dataTemp = [];
-
-      });
-
-
-      console.log(rows);
-
-      this.dataTable.dataRows = rows;
-
-    })
+    this.communitiesService.getByCommunityByMunicipalityId(municipalityId).subscribe(((res: any) => {
+      this.communities = res.data;
+    }));
   }
 
 
-  ngAfterViewInit() {
+  onSubmit() {
 
-    $('#datatables').DataTable({
-      "pagingType": "full_numbers",
-      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-      responsive: true,
-      language: {
-        search: "_INPUT_",
-        searchPlaceholder: "Search records",
+    if (this.communityId == 0 || this.departmentId == 0 || this.municipalityId == 0 || this.familiapriorizada == 0) {
+      this.validForm = false;
+    }
+
+    if (true) {
+
+      let req = {
+        communityId: this.communityId,
+        departmentId: this.departmentId,
+        municipalityId: this.municipalityId,
+        familiapriorizada: this.familiapriorizada
       }
 
-    });
+      //llamada al servicio
 
+      //redireccionar a la parte 2
+      console.log(req)
 
-    var table = $('#datatables').DataTable();
+      this.router.navigateByUrl('monitoring/paso-2/' + this.communityId);
 
-    // Edit record
-    table.on('click', '.edit', function () {
-      var $tr = $(this).closest('tr');
+      
 
-      var data = table.row($tr).data();
-      alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-    });
+    }
 
-    // Delete a record
-    table.on('click', '.remove', function (e) {
-      var $tr = $(this).closest('tr');
-      table.row($tr).remove().draw();
-      e.preventDefault();
-    });
-
-    //Like record
-    table.on('click', '.like', function () {
-      alert('You clicked on Like button');
-    });
-  }
-
-  loadTable() {
-    this.dataTable = {
-      headerRow: ['Pregunta', 'Tipo', 'Estado', 'Acepta', 'Acciones'],
-      footerRow: ['Pregunta', 'Tipo', 'Estado', 'Acepta', 'Acciones'],
-      dataRows: []
-    };
   }
 
 }

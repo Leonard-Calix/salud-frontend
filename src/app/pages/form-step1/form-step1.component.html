@@ -1,0 +1,61 @@
+<div class="tab-pane container">
+    <div class="row">
+        <form [formGroup]="formTbl1" (submit)="onSubmitTbl1()" *ngIf="!loading">
+
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Departamento</label>
+                    <select formControlName="deparmento" class="form-control" name="department">
+                        <option>-Departamento -</option>
+                        <option value="dept1">Departamento 1</option>
+                        <option value="dept2">Departamento 2</option>
+                        <option value="dept3">Departamento 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Municipio</label>
+                    <select formControlName="municipio" class="form-control" name="municipio">
+                        <option selected="" disabled="">- Municipio -</option>
+                        <option value="dept1">Municipio 1</option>
+                        <option value="dept2">Municipio 2</option>
+                        <option value="dept3">Municipio 3</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Aldea</label>
+                    <select formControlName="aldea" name="aldea" class="form-control">
+                        <option selected="" disabled="">- Aldea -</option>
+                        <option value="ms">Bahasa Melayu</option>
+                        <option value="ca">Català</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label">Numero Familia Priorizada</label>
+                    <input formControlName="cantdadFamilias" class="form-control" type="text" name="familiapriorizada"
+                        placeholder="Numero Familia Priorizada" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="footer">
+                    <button type="button" class="btn btn-default btn-fill btn-wd btn-back pull-left">Atras</button>
+                    <button type="button" (click)="notification('step_2')" class="btn btn-info btn-fill btn-wd btn-next pull-right">Siguiente</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+    <button type="button" (click)="notification('step_2')" class="btn btn-info btn-fill btn-wd btn-next pull-right">test</button>
+
+</div>

@@ -7,10 +7,10 @@ import { isNotAuthenticateGuard } from './guards/is-not-authenticate.guard';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/dashboard',
-        //redirectTo: 'pages/login',
+        //redirectTo: '/dashboard',
+        redirectTo: 'pages/login',
         pathMatch: 'full',
-    }, 
+    },
     {
         path: '',
         component: AdminLayoutComponent,
@@ -18,7 +18,8 @@ export const AppRoutes: Routes = [
         children: [{
             path: '',
             loadChildren: () => import('./dashboard/dashboard.module').then(x => x.DashboardModule)
-        }, {
+        },
+        /*{
             path: 'components',
             loadChildren: () => import('./components/components.module').then(x => x.ComponentsModule)
         }, {
@@ -36,10 +37,12 @@ export const AppRoutes: Routes = [
         }, {
             path: 'calendar',
             loadChildren: () => import('./calendar/calendar.module').then(x => x.CalendarModule)
-        }, {
+        }, 
+        */{
             path: '',
             loadChildren: () => import('./userpage/user.module').then(x => x.UserModule)
-        }]
+        }
+    ]
     }, {
         path: '',
         component: AuthLayoutComponent,

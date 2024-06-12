@@ -1,562 +1,637 @@
 <div class="main-content">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="card card-wizard" id="wizardCard">
-                <form [formGroup]="type" id="wizardForm" method="" action="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card card-wizard" id="wizardCard">
+                    <form [formGroup]="type" id="wizardForm" method="" action="">
 
-                <div class="header text-center">
-                    <h3 class="title">Seguimiento Y Monitoreo de Desarrollo Infantil Temprano</h3>
-                    <p class="category">Eje de Salud Red Solidaria</p>
-                </div>
+                        <div class="header text-center">
+                            <h3 class="title">Seguimiento Y Monitoreo de Desarrollo Infantil Temprano</h3>
+                            <p class="category">Eje de Salud Red Solidaria</p>
+                        </div>
 
-                <div class="content">
-                    <ul class="nav">
-                        <li><a href="#tab1" data-toggle="tab">01</a></li>
-                        <li><a href="#tab2" data-toggle="tab">02</a></li>
-                        <li><a href="#tab3" data-toggle="tab">03</a></li>
-                        <li><a href="#tab4" data-toggle="tab">04</a></li>
-                        <li><a href="#tab5" data-toggle="tab">05</a></li>
-                        <li><a href="#tab6" data-toggle="tab">06</a></li>
-                        <li><a href="#tab7" data-toggle="tab">07</a></li>
-                        <li><a href="#tab8" data-toggle="tab">08</a></li>
-                        <li><a href="#tab9" data-toggle="tab">09</a></li>
-                        <li><a href="#tab10" data-toggle="tab">10</a></li>
-                        <li><a href="#tab11" data-toggle="tab">11</a></li>
-                        <li><a href="#tab12" data-toggle="tab">12</a></li>
-                        <li><a href="#tab13" data-toggle="tab">13</a></li>
-                        <li><a href="#tab14" data-toggle="tab">14</a></li>
-                        <li><a href="#tab15" data-toggle="tab">15</a></li>
-                        <li><a href="#tab16" data-toggle="tab">16</a></li>
-                        <li><a href="#tab17" data-toggle="tab">17</a></li>
-                        <li><a href="#tab18" data-toggle="tab">18</a></li>
-                        
-                        
+                        <div class="content">
+                            <ul class="nav">
+                                <li><a href="#tab1" data-toggle="tab">01</a></li>
+                                <li><a href="#tab2" data-toggle="tab">02</a></li>
+                                <li><a href="#tab3" data-toggle="tab">03</a></li>
+                                <li><a href="#tab4" data-toggle="tab">04</a></li>
+                                <li><a href="#tab5" data-toggle="tab">05</a></li>
+                                <li><a href="#tab6" data-toggle="tab">06</a></li>
+                                <li><a href="#tab7" data-toggle="tab">07</a></li>
+                                <li><a href="#tab8" data-toggle="tab">08</a></li>
+                                <li><a href="#tab9" data-toggle="tab">09</a></li>
+                                <li><a href="#tab10" data-toggle="tab">10</a></li>
+                                <li><a href="#tab11" data-toggle="tab">11</a></li>
+                                <li><a href="#tab12" data-toggle="tab">12</a></li>
+                                <li><a href="#tab13" data-toggle="tab">13</a></li>
+                                <li><a href="#tab14" data-toggle="tab">14</a></li>
+                                <li><a href="#tab15" data-toggle="tab">15</a></li>
+                                <li><a href="#tab16" data-toggle="tab">16</a></li>
+                                <li><a href="#tab17" data-toggle="tab">17</a></li>
+                                <li><a href="#tab18" data-toggle="tab">18</a></li>
 
-                    </ul>
+                            </ul>
 
-<div class="tab-content">
-    <!-- Tab 1 -->
-    <div class="tab-pane" id="tab1">
-        <h5 class="text-center">Porfavor Ingresa los Datos.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group" [ngClass]="displayFieldCss(type, 'department')">
-                    <label class="control-label">Departamento</label>
-                    <select class="form-control" name="department">
-                        <option selected="" disabled="">- Departamento -</option>
-                        <option value="dept1">Departamento 1</option>
-                        <option value="dept2">Departamento 2</option>
-                        <option value="dept3">Departamento 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group" [ngClass]="displayFieldCss(type, 'municipio')">
-                    <label class="control-label">Municipio</label>
-                    <select class="form-control" name="municipio">
-                        <option selected="" disabled="">- Municipio -</option>
-                        <option value="dept1">Municipio 1</option>
-                        <option value="dept2">Municipio 2</option>
-                        <option value="dept3">Municipio 3</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group"[ngClass]="displayFieldCss(type, 'aldea')">
-                    <label class="control-label">Aldea</label>
-                    <select name="aldea" class="form-control">
-                        <option selected="" disabled="">- Aldea -</option>
-                        <option value="ms">Bahasa Melayu</option>
-                        <option value="ca">Català</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group"[ngClass]="displayFieldCss(type, 'NumeroFamilia')">
-                    <label class="control-label">Numero Familia Priorizada</label>
-                    <input class="form-control" type="text" name="familiapriorizada" placeholder="Numero Familia Priorizada" />
-                </div>
-             
-            </div>
-            
-            <div class="row">
-         
-            </div>
-            <div> 
-          </div>
-        </div>
-    </div>
+                            <div class="tab-content">
+                                <!-- Tab 1 -->
+                                <div class="tab-pane" id="tab1">
+                                    <h5 class="text-center">Porfavor Ingresa los Datos.</h5>
+                                    <div class="row">
+                                        <!--FORMULARIO 1-->
+                                        <form [formGroup]="formTbl1" (ngSubmit)="onSubmitTbl1()" *ngIf="!loading">
+                                            <div class="col-md-5 col-md-offset-1">
+                                                <div class="form-group">
+                                                    <label class="control-label">Departamento</label>
+                                                    <select class="form-control" name="department">
+                                                        <option formControlName="deparmento" selected="" disabled="">-
+                                                            Departamento -</option>
+                                                        <option value="dept1">Departamento 1</option>
+                                                        <option value="dept2">Departamento 2</option>
+                                                        <option value="dept3">Departamento 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Municipio</label>
+                                                    <select formControlName="municipio" class="form-control"
+                                                        name="municipio">
+                                                        <option selected="0" disabled="">- Municipio -</option>
+                                                        <option value="dept1">Municipio 1</option>
+                                                        <option value="dept2">Municipio 2</option>
+                                                        <option value="dept3">Municipio 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Aldea</label>
+                                                <select formControlName="aldea" name="aldea" class="form-control">
+                                                    <option selected="" disabled="">- Aldea -</option>
+                                                    <option value="ms">Bahasa Melayu</option>
+                                                    <option value="ca">Català</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Numero Familia Priorizada</label>
+                                                <input formControlName="cantdadFamilias" class="form-control"
+                                                    type="number" name="familiapriorizada"
+                                                    placeholder="Numero Familia Priorizada" />
+                                            </div>
 
-    <!-- Tab 2 -->
-    <div class="tab-pane" id="tab2">
-        <h5 class="text-center">Numeros de Familias Priorizadas.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Programada</label>
-                    <input class="form-control" type="text" name="programada" placeholder="Ingrese Numero de Programada" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Ejecutadas</label>
-                    <input class="form-control" type="text" name="ejecutadas" placeholder="Ingrese numero de Ejecutadas" />
-                </div>
-            </div>
-        </div>
-    </div>
+                                        </div>
 
-    <!-- Tab 3 -->
-    <div class="tab-pane" id="tab3">
-        <h5 class="text-center">Cuidador Primario.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Madre</label>
-                    <input class="form-control" type="text" name="madre" placeholder="Ingrese numero de Madre" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Padre</label>
-                    <input class="form-control" type="text" name="padre" placeholder="Ingrese numero de Padre" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Abuela</label>
-                    <input class="form-control" type="text" name="abuela" placeholder="Ingrese numero de Abuela" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Total</label>
-                    <input class="form-control" type="text" name="total" placeholder="Ingrese Valor Total" />
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div class="row">
 
-    <!-- Tab 4 -->
-    <div class="tab-pane" id="tab4">
-        <h5 class="text-center">Embarazada Captada En.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Primeras 12 Semanas de Embarazo</label>
-                    <input class="form-control" type="text" name="primeras12semanas" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Después de las 12 Semanas de Embarazo</label>
-                    <input class="form-control" type="text" name="despues12semanas" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-        </div>
-    </div>
+                                        </div>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- Tab 5 -->
-    <div class="tab-pane" id="tab5">
-        <h5 class="text-center">Parto Atendido En.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Hospital</label>
-                    <input class="form-control" type="text" name="hospital" placeholder="Ingrese Cantidad de Hospital" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Comunidad</label>
-                    <input class="form-control" type="text" name="comunidad" placeholder="Ingrese cantidad de Comunidad" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Su Primera Consulta en los Primeros 7 Días Después Del Parto</label>
-                    <input class="form-control" type="text" name="consulta7dias" placeholder="Ingrese Cantidad de Parto" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Tab 6 -->
-    <div class="tab-pane" id="tab6">
-        <h5 class="text-center">Niños y Niñas menores de 6 meses de edad que recibe lactancia exclusiva.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="lactansi" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="lactanno" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="tab7">
-        <h5 class="text-center">Informacion del Niño o la Niña</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <h5 class="text-center">Edad</h5>
-                    <label class="control-label">0 a 24 meses</label>
-                    <input class="form-control" type="text" name="Edad" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">25 a 36</label>
-                    <input class="form-control" type="text" name="Edad2" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">37 a 72</label>
-                    <input class="form-control" type="text" name="Edad3" placeholder="Ingrese Valor" />
-                </div>
-                           
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <h5 class="text-center">Sexo</h5>
-                    <label class="control-label">Femenino</label>
-                    <input class="form-control" type="text" name="Femenino" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Masculino</label>
-                    <input class="form-control" type="text" name="Masculino" placeholder="Ingrese Valor" />
-                </div> 
-            </div>           
-        </div>
-    </div>
-    <div class="tab-pane" id="tab8">
-        <h5 class="text-center">Niña o Niño Incristo el RNP En el primer año de Vida.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="Rnpsi" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="Rnpno" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="tab9">
-        <h5 class="text-center">Esquema completo de Vacunacion.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Hepatitis "B"</label>
-                    <input class="form-control" type="text" name="Hepatis" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">TERCERA DOSIS PENTAVALENTE</label>
-                    <input class="form-control" type="text" name="Penta" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">SRP DE 12 23 MESES</label>
-                    <input class="form-control" type="text" name="Srp" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">BCG</label>
-                    <input class="form-control" type="text" name="BCG" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">SEGUNDA DOSIS DE ROTAVIRUS</label>
-                    <input class="form-control" type="text" name="Rota" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">TERCERA DOSIS DE NEUMOCOCO</label>
-                    <input class="form-control" type="text" name="Neumo" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="tab10">
-        <h5 class="text-center">Grupo Etnico a que Pertenece.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Lenca</label>
-                    <input class="form-control" type="text" name="Lenca" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Chortis</label>
-                    <input class="form-control" type="text" name="Chortis" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Tawaska</label>
-                    <input class="form-control" type="text" name="Tawaska" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Otros</label>
-                    <input class="form-control" type="text" name="Otros1" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Tolupan</label>
-                    <input class="form-control" type="text" name="Tolupan" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Mestizo</label>
-                    <input class="form-control" type="text" name="Mestizo" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Garifuna</label>
-                    <input class="form-control" type="text" name="Garifuna" placeholder="Ingrese Valor" />
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="tab11">
-        <h5 class="text-center">Numero de niños evaluados con cinta MAUC (6 meses a 5 años).</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">NORMAL Mayor de 12.5 cm</label>
-                    <input class="form-control" type="text" name="Norma" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">DA MODERADA (Entre 12.5 a 11.5 cm ) "DAM"</label>
-                    <input class="form-control" type="text" name="DAM" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">DA SEVERO (Menor de 11.5 cm o mayor de 11.5 con edema)  "DAS"</label>
-                    <input class="form-control" type="text" name="DAS" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Otros</label>
-                    <input class="form-control" type="text" name="Otro" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-           
-        </div>
-    </div>
-    <div class="tab-pane" id="tab12">
-        <h5 class="text-center">Número de Niños con desnutrición que reciben Tratamiento con RUFT.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="Ruftsi" placeholder="Ingrese Valor" />
-                </div>                
-                
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="Ruftno" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-        </div>
-    </div>
-    <div class="tab-pane" id="tab13">
-        <h5 class="text-center">Capacitacion Uso de la Guia.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="Usosi" placeholder="Ingrese Valor" />
-                </div>                
-                
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="Usono" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-        </div>
-    </div>
-    <div class="tab-pane" id="tab14">
-        <h5 class="text-center">Numero de Intervenciones.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="Intersi" placeholder="Ingrese Valor" />
-                </div>                
-                
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="Interno" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-        </div>
-    </div>
-    <div class="tab-pane" id="tab15">
-        <h5 class="text-center">Seguimiento.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="Segsi" placeholder="Ingrese Valor" />
-                </div>                
-                
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="Segno" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-        </div>
-    </div>
-    <div class="tab-pane" id="tab16">
-        <h5 class="text-center">Numero de Guias Desarrolladas.</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1 ">
-                <div class="form-group">
-                    <label class="control-label">Si</label>
-                    <input class="form-control" type="text" name="GuiaSi" placeholder="Ingrese Valor" />
-                </div>                
-            </div>
-            
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">No</label>
-                    <input class="form-control" type="text" name="GuiaNo" placeholder="Ingrese Valor" />
-                </div>
-            </div>
-    
-            <div class="col-md-10 col-md-offset-1 ">
-                <div class="form-group">
-                    <label class="text-center">Nombre Supervisor Mancumunitario</label>
-                    <input class="form-control" type="text" name="supervisor_nombre" placeholder="Ingrese Nombre Supervisor" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="tab17">
-        <h5 class="text-center">Numero de Guias</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Guia 1</label>
-                    <input class="form-control" type="text" name="guia1" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 2</label>
-                    <input class="form-control" type="text" name="guia2" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 3</label>
-                    <input class="form-control" type="text" name="guia3" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 4</label>
-                    <input class="form-control" type="text" name="guia4" placeholder="Ingrese Valor" />
-                </div>
-                           
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Guia 5</label>
-                    <input class="form-control" type="text" name="guia5" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 6</label>
-                    <input class="form-control" type="text" name="guia6" placeholder="Ingrese Valor" />
-                </div> 
-                <div class="form-group">                    
-                    <label class="control-label">Guia 7</label>
-                    <input class="form-control" type="text" name="guia7" placeholder="Ingrese Valor" />
-                </div> 
-            </div>           
-        </div>
-    </div>
-    <div class="tab-pane" id="tab18">
-        <h5 class="text-center">Numero de Guias</h5>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Guia 8</label>
-                    <input class="form-control" type="text" name="guia8" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 9</label>
-                    <input class="form-control" type="text" name="guia9" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 10</label>
-                    <input class="form-control" type="text" name="guia10" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 11</label>
-                    <input class="form-control" type="text" name="guia11" placeholder="Ingrese Valor" />
-                </div>
-                           
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Guia 12</label>
-                    <input class="form-control" type="text" name="guia12" placeholder="Ingrese Valor" />
-                </div>
-                <div class="form-group">                    
-                    <label class="control-label">Guia 13</label>
-                    <input class="form-control" type="text" name="guia13" placeholder="Ingrese Valor" />
-                </div> 
-                <div class="form-group">                    
-                    <label class="control-label">Guia 14</label>
-                    <input class="form-control" type="text" name="guia14" placeholder="Ingrese Valor" />
-                </div> 
-            </div>           
-        </div>
-    </div>
-    
-    
-    
-    
-    
-</div>
+                                <!-- Tab 2 -->
+                                <div class="tab-pane" id="tab2">
+                                    <h5 class="text-center">Numeros de Familias Priorizadas.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Programada</label>
+                                                <input class="form-control" type="text" name="programada"
+                                                    placeholder="Ingrese Numero de Programada" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Ejecutadas</label>
+                                                <input class="form-control" type="text" name="ejecutadas"
+                                                    placeholder="Ingrese numero de Ejecutadas" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tab 3 -->
+                                <div class="tab-pane" id="tab3">
+                                    <h5 class="text-center">Cuidador Primario.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Madre</label>
+                                                <input class="form-control" type="text" name="madre"
+                                                    placeholder="Ingrese numero de Madre" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Padre</label>
+                                                <input class="form-control" type="text" name="padre"
+                                                    placeholder="Ingrese numero de Padre" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Abuela</label>
+                                                <input class="form-control" type="text" name="abuela"
+                                                    placeholder="Ingrese numero de Abuela" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Total</label>
+                                                <input class="form-control" type="text" name="total"
+                                                    placeholder="Ingrese Valor Total" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tab 4 -->
+                                <div class="tab-pane" id="tab4">
+                                    <h5 class="text-center">Embarazada Captada En.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Primeras 12 Semanas de Embarazo</label>
+                                                <input class="form-control" type="text" name="primeras12semanas"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Después de las 12 Semanas de
+                                                    Embarazo</label>
+                                                <input class="form-control" type="text" name="despues12semanas"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tab 5 -->
+                                <div class="tab-pane" id="tab5">
+                                    <h5 class="text-center">Parto Atendido En.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Hospital</label>
+                                                <input class="form-control" type="text" name="hospital"
+                                                    placeholder="Ingrese Cantidad de Hospital" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Comunidad</label>
+                                                <input class="form-control" type="text" name="comunidad"
+                                                    placeholder="Ingrese cantidad de Comunidad" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Su Primera Consulta en los Primeros 7 Días
+                                                    Después Del Parto</label>
+                                                <input class="form-control" type="text" name="consulta7dias"
+                                                    placeholder="Ingrese Cantidad de Parto" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tab 6 -->
+                                <div class="tab-pane" id="tab6">
+                                    <h5 class="text-center">Niños y Niñas menores de 6 meses de edad que recibe
+                                        lactancia exclusiva.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="lactansi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="lactanno"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab7">
+                                    <h5 class="text-center">Informacion del Niño o la Niña</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <h5 class="text-center">Edad</h5>
+                                                <label class="control-label">0 a 24 meses</label>
+                                                <input class="form-control" type="text" name="Edad"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">25 a 36</label>
+                                                <input class="form-control" type="text" name="Edad2"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">37 a 72</label>
+                                                <input class="form-control" type="text" name="Edad3"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <h5 class="text-center">Sexo</h5>
+                                                <label class="control-label">Femenino</label>
+                                                <input class="form-control" type="text" name="Femenino"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Masculino</label>
+                                                <input class="form-control" type="text" name="Masculino"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab8">
+                                    <h5 class="text-center">Niña o Niño Incristo el RNP En el primer año de Vida.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="Rnpsi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="Rnpno"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab9">
+                                    <h5 class="text-center">Esquema completo de Vacunacion.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Hepatitis "B"</label>
+                                                <input class="form-control" type="text" name="Hepatis"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">TERCERA DOSIS PENTAVALENTE</label>
+                                                <input class="form-control" type="text" name="Penta"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">SRP DE 12 23 MESES</label>
+                                                <input class="form-control" type="text" name="Srp"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">BCG</label>
+                                                <input class="form-control" type="text" name="BCG"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">SEGUNDA DOSIS DE ROTAVIRUS</label>
+                                                <input class="form-control" type="text" name="Rota"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">TERCERA DOSIS DE NEUMOCOCO</label>
+                                                <input class="form-control" type="text" name="Neumo"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab10">
+                                    <h5 class="text-center">Grupo Etnico a que Pertenece.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Lenca</label>
+                                                <input class="form-control" type="text" name="Lenca"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Chortis</label>
+                                                <input class="form-control" type="text" name="Chortis"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Tawaska</label>
+                                                <input class="form-control" type="text" name="Tawaska"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Otros</label>
+                                                <input class="form-control" type="text" name="Otros1"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Tolupan</label>
+                                                <input class="form-control" type="text" name="Tolupan"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Mestizo</label>
+                                                <input class="form-control" type="text" name="Mestizo"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Garifuna</label>
+                                                <input class="form-control" type="text" name="Garifuna"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab11">
+                                    <h5 class="text-center">Numero de niños evaluados con cinta MAUC (6 meses a 5 años).
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">NORMAL Mayor de 12.5 cm</label>
+                                                <input class="form-control" type="text" name="Norma"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">DA MODERADA (Entre 12.5 a 11.5 cm )
+                                                    "DAM"</label>
+                                                <input class="form-control" type="text" name="DAM"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">DA SEVERO (Menor de 11.5 cm o mayor de 11.5
+                                                    con edema) "DAS"</label>
+                                                <input class="form-control" type="text" name="DAS"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Otros</label>
+                                                <input class="form-control" type="text" name="Otro"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
 
 
-                   
-        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab12">
+                                    <h5 class="text-center">Número de Niños con desnutrición que reciben Tratamiento con
+                                        RUFT.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="Ruftsi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
 
-                <div class="footer">
-                    <button type="button" class="btn btn-default btn-fill btn-wd btn-back pull-left">Atras</button>
+                                        </div>
 
-                    <button type="button" class="btn btn-info btn-fill btn-wd btn-next pull-right">Siguiente</button>
-                    <button type="button" class="btn btn-info btn-fill btn-wd btn-finish pull-right" click="onFinishWizard()">Terminado</button>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="Ruftno"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
 
-                    <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab13">
+                                    <h5 class="text-center">Capacitacion Uso de la Guia.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="Usosi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="Usono"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab14">
+                                    <h5 class="text-center">Numero de Intervenciones.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="Intersi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="Interno"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab15">
+                                    <h5 class="text-center">Seguimiento.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="Segsi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="Segno"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab16">
+                                    <h5 class="text-center">Numero de Guias Desarrolladas.</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1 ">
+                                            <div class="form-group">
+                                                <label class="control-label">Si</label>
+                                                <input class="form-control" type="text" name="GuiaSi"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">No</label>
+                                                <input class="form-control" type="text" name="GuiaNo"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-10 col-md-offset-1 ">
+                                            <div class="form-group">
+                                                <label class="text-center">Nombre Supervisor Mancumunitario</label>
+                                                <input class="form-control" type="text" name="supervisor_nombre"
+                                                    placeholder="Ingrese Nombre Supervisor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab17">
+                                    <h5 class="text-center">Numero de Guias</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 1</label>
+                                                <input class="form-control" type="text" name="guia1"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 2</label>
+                                                <input class="form-control" type="text" name="guia2"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 3</label>
+                                                <input class="form-control" type="text" name="guia3"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 4</label>
+                                                <input class="form-control" type="text" name="guia4"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 5</label>
+                                                <input class="form-control" type="text" name="guia5"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 6</label>
+                                                <input class="form-control" type="text" name="guia6"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 7</label>
+                                                <input class="form-control" type="text" name="guia7"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab18">
+                                    <h5 class="text-center">Numero de Guias</h5>
+                                    <div class="row">
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 8</label>
+                                                <input class="form-control" type="text" name="guia8"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 9</label>
+                                                <input class="form-control" type="text" name="guia9"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 10</label>
+                                                <input class="form-control" type="text" name="guia10"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 11</label>
+                                                <input class="form-control" type="text" name="guia11"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 12</label>
+                                                <input class="form-control" type="text" name="guia12"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 13</label>
+                                                <input class="form-control" type="text" name="guia13"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Guia 14</label>
+                                                <input class="form-control" type="text" name="guia14"
+                                                    placeholder="Ingrese Valor" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="footer">
+                            <button type="button"
+                                class="btn btn-default btn-fill btn-wd btn-back pull-left">Atras</button>
+
+                            <button type="submit"
+                                class="btn btn-info btn-fill btn-wd btn-next pull-right">Siguiente</button>
+                            <button type="button" class="btn btn-info btn-fill btn-wd btn-finish pull-right"
+                                click="onFinishWizard()">Terminado</button>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+
                 </div>
-                </form>
-
             </div>
         </div>
-    </div>
-
-

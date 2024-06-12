@@ -24,7 +24,6 @@ export class QuestionService {
 
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
-
     return this.http.post(`${this.baseUrl}/questions`, question, { headers });
   }
 
