@@ -28,14 +28,8 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'pe-7s-graph'
     },
     {
-        path: '/monitoring',
-        title: 'Ficha',
-        type: 'link',
-        icontype: 'pe-7s-note2'
-    },
-    {
         path: '/maintenance',
-        title: 'Mantenimiento',
+        title: 'Encuestas',
         type: 'link',
         icontype: 'pe-7s-graph'
     },

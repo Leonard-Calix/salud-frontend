@@ -1,17 +1,17 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { dataExample } from 'app/helpers/formData';
-import { successAlert } from 'app/helpers/sweetalert';
 import { Community } from 'app/interfaces/Community.interface';
 import { Department } from 'app/interfaces/Department.interface';
 import { Municipality } from 'app/interfaces/Municipality.interface';
 import { Question } from 'app/interfaces/Question.interface';
+import { Req } from 'app/interfaces/Req.Interface';
 import { CommunitiesService } from 'app/services/communities.service';
 import { DepartmentService } from 'app/services/department.service';
 import { MunicipalitiesService } from 'app/services/municipalities.service';
-import { PollService } from 'app/services/poll.service';
 import { QuestionService } from 'app/services/question.service';
+import { ServeysService } from 'app/services/serveys.service';
+import swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -50,6 +50,9 @@ export class MonitoringComponent implements OnInit {
     dataGroup: questionData[] = [];
     loadingQuestions: boolean = true;
     generalRecommendation: string = "";
+    type: FormGroup;
+    formTbl1: FormGroup;
+    loading: boolean = true;
 
 
     formPoll: FormGroup;
@@ -62,85 +65,193 @@ export class MonitoringComponent implements OnInit {
         private readonly deparmentService: DepartmentService,
         private readonly municipalitiesService: MunicipalitiesService,
         private readonly communitiesService: CommunitiesService,
-        private readonly questionsService: QuestionService,
-        private readonly pollservice: PollService,
+        private readonly serveyService: ServeysService,
         private formBuilder: FormBuilder,
         private router: Router
     ) {
 
     }
     public typeValidation: User;
-    ngOnInit() {
-        //this.inicialiceTable();
 
-        this.dataGroup = dataExample;
+
+    ngOnInit() {
+
+        this.type = this.formBuilder.group({
+
+            departmentId: [0, Validators.required],
+            municipalityId: [0, Validators.required],
+
+            //form1
+            communityId: [0, Validators.required],
+            famPriorizadas: [0, Validators.required],
+
+            //form2
+            ejecutadas: [0, Validators.required],
+            programadas: [0, Validators.required],
+
+            //form3
+            madre: [0, Validators.required],
+            padre: [0, Validators.required],
+            abuela: [0, Validators.required],
+            total: [0, Validators.required],
+
+            //form4
+            antes: [0, Validators.required],
+            despues: [0, Validators.required],
+            semanas: [0, Validators.required],
+
+            //form5
+            hospital: ["", Validators.required],
+            comunidad: ["", Validators.required],
+            consulta: [0, Validators.required],
+
+            //form6
+            sinLactancia: [0, Validators.required],
+            conLactancia: [0, Validators.required],
+
+            //form7
+            rango1: [0, Validators.required],
+            rango2: [0, Validators.required],
+            rango3: [0, Validators.required],
+            masculino: [0, Validators.required],
+            femenino: [0, Validators.required],
+
+            //form8
+            noInscritos: [0, Validators.required],
+            inscritos: [0, Validators.required],
+
+            //form9
+            hepatitis: [0, Validators.required],
+            bcg: [0, Validators.required],
+            pentavalente: [0, Validators.required],
+            rotavirus: [0, Validators.required],
+            srp: [0, Validators.required],
+            nuemococo: [0, Validators.required],
+
+            //form10
+            lencas: [0, Validators.required],
+            tolupan: [0, Validators.required],
+            chortis: [0, Validators.required],
+            mestizo: [0, Validators.required],
+            tawaka: [0, Validators.required],
+            garifuna: [0, Validators.required],
+            otros: [0, Validators.required],
+
+            //form11
+            normal: [0, Validators.required],
+            moderada: [0, Validators.required],
+            severo: [0, Validators.required],
+            otro: [0, Validators.required],
+
+            //form12
+            noDesnutridos: [0, Validators.required],
+            desnutridos: [0, Validators.required],
+
+            //form13
+            usoGuia: [0, Validators.required],
+            nousoGuia: [0, Validators.required],
+
+            //form14
+            intervino: [0, Validators.required],
+            noIntervino: [0, Validators.required],
+
+            //form15
+            conSeguimiento: [0, Validators.required],
+            sinSeguimiento: [0, Validators.required],
+
+            //form16
+            desarrolladas: [0, Validators.required],
+            noDesarrolladas: [0, Validators.required],
+            supervisor: ["", Validators.required],
+        });
+        // you can also use the nav-pills-[blue | azure | green | orange | red] for a different color of wizard
+        // Code for the Validator
+        var $validator = $('.card-wizard form').validate({
+            rules: {
+                departmentId: {
+                    required: true,
+                    minlength: 1
+                },
+                municipalityId: {
+                    required: true,
+                    minlength: 1
+                },
+                communityId: {
+                    required: true,
+                    minlength: 1
+                },
+                famPriorizadas: {
+                    required: true,
+                    minlength: 1,
+                }
+            },
+
+            highlight: function (element) {
+                $(element).parent().addClass('has-error').removeClass('has-success');
+            },
+            success: function (element) {
+                $(element).parent().addClass('has-success').removeClass('has-error');
+            }
+        });
+
+        $('#wizardCard').bootstrapWizard({
+            tabClass: 'nav nav-pills',
+            nextSelector: '.btn-next',
+            previousSelector: '.btn-back',
+            lastSelector: '.btn-finish',
+            onNext: function (tab, navigation, index) {
+                var $valid = $('.card-wizard form').valid();
+                if (!$valid) {
+                    $validator.focusInvalid();
+                    return false;
+                }
+            },
+            onInit: function (tab, navigation, index) {
+
+                //check number of tabs and fill the entire row
+                var $total = navigation.find('li').length;
+                var $width = 100 / $total;
+
+                var $display_width = $(document).width();
+
+                if ($display_width < 600 && $total > 3) {
+                    $width = 50;
+                }
+
+                navigation.find('li').css('width', $width + '%');
+            },
+            onTabClick: function (tab, navigation, index) {
+                // Disable the posibility to click on tabs
+                return false;
+            },
+            onTabShow: function (tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index + 1;
+
+                var wizard = navigation.closest('.card-wizard');
+
+                // If it's the last tab then hide the last button and show the finish instead
+                if ($current >= $total) {
+                    $(wizard).find('.btn-next').hide();
+                    $(wizard).find('.btn-finish').show();
+                } else if ($current == 1) {
+                    $(wizard).find('.btn-back').hide();
+                } else {
+                    $(wizard).find('.btn-back').show();
+                    $(wizard).find('.btn-next').show();
+                    $(wizard).find('.btn-finish').hide();
+                }
+            },
+            onLast: function (tab, navigation, index) {
+            }
+        });
 
         this.getDeparments();
 
-        this.getQuestions();
+        this.loading = false;
 
     }
 
-    /*
-        inicialiceTable() {
-            //  Activate the tooltips
-            $('[rel="tooltip"]').tooltip();
-    
-            //  Init Bootstrap Select Picker
-            if ($(".selectpicker").length != 0) {
-                $(".selectpicker").selectpicker({
-                    iconBase: "fa",
-                    tickIcon: "fa-check"
-                });
-            }
-    
-            $('.datetimepicker').datetimepicker({
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-            });
-    
-            $('.datepicker').datetimepicker({
-                format: 'MM/DD/YYYY',    //use this format if you want the 12hours timpiecker with AM/PM toggle
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-            });
-    
-            $('.timepicker').datetimepicker({
-                //          format: 'H:mm',    // use this format if you want the 24hours timepicker
-                format: 'h:mm A',    //use this format if you want the 12hours timpiecker with AM/PM toggle
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-    
-            });
-        }
-    */
     getDeparments() {
         this.deparmentService.getAll().subscribe(((res: any) => {
             //console.log(res);
@@ -160,7 +271,7 @@ export class MonitoringComponent implements OnInit {
         }));
     }
 
-    getMunicipalities(event: any) {
+    getCommunities(event: any) {
         let municipalityId: number = event.target.value;
 
         this.municipalityId = Number(municipalityId);
@@ -170,125 +281,115 @@ export class MonitoringComponent implements OnInit {
         }));
     }
 
-    getQuestions() {
-        this.questionsService.getAll().subscribe(((res: any) => {
-            this.question = res.data;
-
-            let data: questionData[] = [];
-            let group: any = {};
-
-            res.data.forEach((item: Question) => {
-
-                if (item.state) {
-                    data.push({
-                        questionId: item.id,
-                        descripcion: item.description,
-                        otherResponse: "",
-                        recommendation: item.recommendation,
-                        key: "questions?" + item.id,
-                        key2: "recommendations?" + item.id,
-                    });
-                }
-
-
-            });
-
-
-
-            this.dataGroup = data;
-
-            data.forEach(question => {
-                group[question.key] = new FormControl(false, Validators.required);
-
-                if (question?.key2) {
-                    group[question.key2] = new FormControl("", question.recommendation && Validators.required);
-                }
-
-            });
-
-            this.formPoll = this.formBuilder.group(group);
-
-            this.loadingQuestions = false;
-
-
-        }));
+    getValueForm(controlName: string): any {
+        return this.type.get(controlName)?.value
     }
 
-    save() {
-        //console.log({ municipalityId: this.municipalityId, departmentId: this.departmentId, communityId: Number(this.communityId) });
+    onSubmitTbl1() {
 
-        let req: any[] = [];
+        let req: Req = {
 
-        this.dataGroup.forEach(element => {
-            let questionId = Number(element.key.split('?')[1]);
-            req.push({
-                description: this.formPoll.get(element.key2).value,
-                response: this.formPoll.get(element.key).value,
-                QuestionId: questionId,
-                CommunityId: Number(this.communityId)
-            });
-        });
+            monitoreo: {
+                communityId: Number(this.getValueForm('communityId')), 
+                famPriorizadas : this.getValueForm('famPriorizadas')
+            },
+            form2: {
+                ejecutadas: this.getValueForm('ejecutadas'),
+                programadas: this.getValueForm('programadas'),
+            },
+            form3: {
+                abuela: this.getValueForm('abuela'),
+                madre: this.getValueForm('madre'),
+                padre: this.getValueForm('padre'),
+                total: this.getValueForm('total'),
+            },
+            form4: {
+                antes: this.getValueForm('antes'),
+                despues: this.getValueForm('despues'),
+                semanas: this.getValueForm('semanas'),
+            },
+            form5: {
+                comunidad: this.getValueForm('comunidad'),
+                consulta: this.getValueForm('consulta'),
+                hospital: this.getValueForm('hospital'),
+            },
+            form6: {
+                conLactancia: this.getValueForm('conLactancia'),
+                sinLactancia: this.getValueForm('sinLactancia'),
+            },
+            form7: {
+                femenino: this.getValueForm('femenino'),
+                masculino: this.getValueForm('abuela'),
+                rango1: this.getValueForm('rango1'),
+                rango2: this.getValueForm('rango2'),
+                rango3: this.getValueForm('rango3'),
+            },
+            form8: {
+                inscritos: this.getValueForm('inscritos'),
+                noInscritos: this.getValueForm('noInscritos'),
+            },
+            form9: {
+                bcg: this.getValueForm('bcg'),
+                hepatitis: this.getValueForm('hepatitis'),
+                nuemococo: this.getValueForm('nuemococo'),
+                pentavalente: this.getValueForm('pentavalente'),
+                rotavirus: this.getValueForm('rotavirus'),
+                srp: this.getValueForm('srp'),
+            },
+            form10: {
+                chortis: this.getValueForm('chortis'),
+                garifuna: this.getValueForm('garifuna'),
+                lencas: this.getValueForm('lencas'),
+                mestizo: this.getValueForm('mestizo'),
+                otros: this.getValueForm('otros'),
+                tawaka: this.getValueForm('tawaka'),
+                tolupan: this.getValueForm('tolupan'),
+            },
+            form11: {
+                moderada: this.getValueForm('moderada'),
+                normal: this.getValueForm('normal'),
+                otro: this.getValueForm('otro'),
+                severo: this.getValueForm('severo'),
+            },
+            form12: {
+                desnutridos: this.getValueForm('desnutridos'),
+                noDesnutridos: this.getValueForm('noDesnutridos')
+            },
+            form13: {
+                nousoGuia: this.getValueForm('nousoGuia'),
+                usoGuia: this.getValueForm('usoGuia'),
+            },
+            form14: {
+                intervino: this.getValueForm('intervino'),
+                noIntervino: this.getValueForm('noIntervino'),
+            },
+            form15: {
+                conSeguimiento: this.getValueForm('conSeguimiento'),
+                sinSeguimiento: this.getValueForm('sinSeguimiento'),
+            },
 
-        let body: any = {
-            polls: req,
-            survey: {
-                recomendation: this.generalRecommendation,
-                monitoringDate: '',
-                communityId: Number(this.communityId)
+            form16: {
+                desarrolladas: this.getValueForm('desarrolladas'),
+                noDesarrolladas: this.getValueForm('noDesarrolladas'),
+                supervisor: this.getValueForm('supervisor'),
             }
+
         };
 
-        console.log(body);
+        console.log(req)
 
+        this.serveyService.create(req).subscribe((response: any) => {
+            console.log(response)
 
-        this.pollservice.bulkCreate(body).subscribe({
-            error: (err) => {
-                successAlert('Exitoso', err)
-            },
-            complete() {
-                successAlert('Exitoso', 'Registro guardado con exito')
-            },
-        });
+            if (response.ok) {
 
-    }
+                swal.fire("Buen Trabajo", "Encuesta guardada con exito", "success");
 
-    inicializeProperteForm() {
-
-        let data: questionData[] = [];
-
-        this.question.forEach((item: Question) => {
-            data.push({
-                questionId: item.id,
-                descripcion: item.description,
-                otherResponse: "",
-                recommendation: item.recommendation,
-                key: "questions?" + item.id,
-                key2: "recommendations?" + item.id,
-            });
-        });
-
-        this.dataGroup = [...data];
-    }
-
-    toFormGroup() {
-        const group: any = {};
-
-        this.dataGroup.forEach(question => {
-            group[question.key] = new FormControl(false, Validators.required);
-
-            if (question?.key2) {
-                group[question.key2] = new FormControl("", Validators.required);
+                this.router.navigateByUrl('/dashboard');
             }
-
         });
 
-        this.formPoll = this.formBuilder.group(group);
     }
-    save2(model: User, isValid: boolean) {
-        // call API to save customer
-            if(isValid){
-                console.log(model, isValid);
-            }
-        }
+
 
 }

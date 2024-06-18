@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Req } from 'app/interfaces/Req.Interface';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
@@ -24,6 +25,11 @@ export class ServeysService {
   findOne(serverId: number): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
     return this.http.get(`${this.baseUrl}/surveys/` + serverId, { headers });
+  }
+
+  create(req: Req) {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+    return this.http.post(`${this.baseUrl}/monitoreo-completo`, req, { headers });
   }
 
 }
