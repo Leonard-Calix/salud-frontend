@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -183,7 +184,200 @@ export class MonitoringComponent implements OnInit {
                 famPriorizadas: {
                     required: true,
                     minlength: 1,
+                },
+                ejecutadas: {
+                    required: true,
+                    minlength: 1,
+                },
+                programadas: {
+                    required: true,
+                    minlength: 1,
+                },
+                madre: {
+                    required: true,
+                    minlength: 1,
+                },
+                padre: {
+                    required: true,
+                    minlength: 1,
+                },
+                abuela: {
+                    required: true,
+                    minlength: 1,
+                },
+                total: {
+                    required: true,
+                    minlength: 1,
+                },
+                antes: {
+                    required: true,
+                    minlength: 1,
+                },
+                despues: {
+                    required: true,
+                    minlength: 1,
+                },
+                hospital: {
+                    required: true,
+                    minlength: 1,
+                },
+                comunidad: {
+                    required: true,
+                    minlength: 1,
+                },
+                consulta: {
+                    required: true,
+                    minlength: 1,
+                },
+                conLactancia: {
+                    required: true,
+                    minlength: 1,
+                },
+                sinLactancia: {
+                    required: true,
+                    minlength: 1,
+                },
+                rango1: {
+                    required: true,
+                    minlength: 1,
+                },
+                rango2: {
+                    required: true,
+                    minlength: 1,
+                },
+                rango3: {
+                    required: true,
+                    minlength: 1,
+                },
+                femenino: {
+                    required: true,
+                    minlength: 1,
+                },
+                masculino: {
+                    required: true,
+                    minlength: 1,
+                },
+                noInscritos: {
+                    required: true,
+                    minlength: 1,
+                },
+                inscritos: {
+                    required: true,
+                    minlength: 1,
+                },
+                pentavalente: {
+                    required: true,
+                    minlength: 1,
+                },
+                hepatitis: {
+                    required: true,
+                    minlength: 1,
+                },
+                srp: {
+                    required: true,
+                    minlength: 1,
+                },
+                bcg: {
+                    required: true,
+                    minlength: 1,
+                },
+                rotavirus: {
+                    required: true,
+                    minlength: 1,
+                },
+                nuemococo: {
+                    required: true,
+                    minlength: 1,
+                },
+                lencas: {
+                    required: true,
+                    minlength: 1,
+                },
+                chortis: {
+                    required: true,
+                    minlength: 1,
+                },
+                tawaka: {
+                    required: true,
+                    minlength: 1,
+                },
+                otros: {
+                    required: true,
+                    minlength: 1,
+                },
+                tolupan: {
+                    required: true,
+                    minlength: 1,
+                },
+                mestizo: {
+                    required: true,
+                    minlength: 1,
+                },
+                garifuna: {
+                    required: true,
+                    minlength: 1,
+                },
+                normal: {
+                    required: true,
+                    minlength: 1,
+                },
+                moderada: {
+                    required: true,
+                    minlength: 1,
+                },
+                severo: {
+                    required: true,
+                    minlength: 1,
+                },
+                otro: {
+                    required: true,
+                    minlength: 1,
+                },
+                desnutridos: {
+                    required: true,
+                    minlength: 1,
+                },
+                noDesnutridos: {
+                    required: true,
+                    minlength: 1,
+                },
+                usoGuia: {
+                    required: true,
+                    minlength: 1,
+                },
+                nousoGuia: {
+                    required: true,
+                    minlength: 1,
+                },
+                intervino: {
+                    required: true,
+                    minlength: 1,
+                },
+                noIntervino: {
+                    required: true,
+                    minlength: 1,
+                },
+                conSeguimiento: {
+                    required: true,
+                    minlength: 1,
+                },
+                sinSeguimiento: {
+                    required: true,
+                    minlength: 1,
+                },
+                desarrolladas: {
+                    required: true,
+                    minlength: 1,
+                },
+                noDesarrolladas: {
+                    required: true,
+                    minlength: 1,
+                },
+                supervisor: {
+                    required: true,
+                    minlength: 1,
                 }
+
             },
 
             highlight: function (element) {
@@ -383,7 +577,7 @@ export class MonitoringComponent implements OnInit {
 
             if (response.ok) {
 
-                swal.fire("Buen Trabajo", "Encuesta guardada con exito", "success");
+                swal.fire("Buen Trabajo", "Datos guardado con exito", "success");
 
                 this.router.navigateByUrl('/dashboard');
             }
