@@ -16,7 +16,6 @@ export interface Req {
     form15?: Form15
     form16?: Form16
     form17?: Form17
-    form18?: Form18
 }
 
 export interface Monitoreo {
@@ -119,6 +118,19 @@ export interface Form16 {
     supervisor: string
 }
 
-export interface Form17 { }
-
-export interface Form18 { }
+export interface Form17 {
+    guia1PEmbarazo: number
+    guia2PNacimiento: number
+    guia3PPrimerMes: number
+    guia4P1A3Meses: number
+    guia5P4A6Meses: number
+    guia6P6A8Meses: number
+    guia7P9A12Meses: number
+    guia8P12A17Meses: number
+    guia9P18A23Meses: number
+    guia10P2A3Anios: number
+    guia11P3Anios: number
+    guia12P4Anios: number
+    guia13P5Anios: number
+    guia14P4Anios: number
+}

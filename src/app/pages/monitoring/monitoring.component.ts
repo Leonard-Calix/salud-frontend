@@ -164,6 +164,25 @@ export class MonitoringComponent implements OnInit {
             desarrolladas: [0, Validators.required],
             noDesarrolladas: [0, Validators.required],
             supervisor: ["", Validators.required],
+
+            //form17 
+            guia1PEmbarazo: [0, Validators.required],
+            guia2PNacimiento: [0, Validators.required],
+            guia3PPrimerMes: [0, Validators.required],
+            guia4P1A3Meses: [0, Validators.required],
+            guia5P4A6Meses: [0, Validators.required],
+            guia6P6A8Meses: [0, Validators.required],
+            guia7P9A12Meses: [0, Validators.required],
+
+            //form18
+            guia8P12A17Meses: [0, Validators.required],
+            guia9P18A23Meses: [0, Validators.required],
+            guia10P2A3Anios: [0, Validators.required],
+            guia11P3Anios: [0, Validators.required],
+            guia12P4Anios: [0, Validators.required],
+            guia13P5Anios: [0, Validators.required],
+            guia14P4Anios: [0, Validators.required]
+
         });
         // you can also use the nav-pills-[blue | azure | green | orange | red] for a different color of wizard
         // Code for the Validator
@@ -376,7 +395,59 @@ export class MonitoringComponent implements OnInit {
                 supervisor: {
                     required: true,
                     minlength: 1,
-                }
+                },
+                guia1PEmbarazo: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia2PNacimiento: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia3PPrimerMes: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia4P1A3Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia5P4A6Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia6P6A8Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia7P9A12Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia8P12A17Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia9P18A23Meses: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia10P2A3Anios: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia11P3Anios: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia12P4Anios: {
+                    required: true,
+                    minlength: 1,
+                },
+                guia13P5Anios: {
+                    required: true,
+                    minlength: 1,
+                },
 
             },
 
@@ -484,8 +555,8 @@ export class MonitoringComponent implements OnInit {
         let req: Req = {
 
             monitoreo: {
-                communityId: Number(this.getValueForm('communityId')), 
-                famPriorizadas : this.getValueForm('famPriorizadas')
+                communityId: Number(this.getValueForm('communityId')),
+                famPriorizadas: this.getValueForm('famPriorizadas')
             },
             form2: {
                 ejecutadas: this.getValueForm('ejecutadas'),
@@ -566,8 +637,23 @@ export class MonitoringComponent implements OnInit {
                 desarrolladas: this.getValueForm('desarrolladas'),
                 noDesarrolladas: this.getValueForm('noDesarrolladas'),
                 supervisor: this.getValueForm('supervisor'),
+            },
+            form17: {
+                guia1PEmbarazo: this.getValueForm('guia1PEmbarazo'),
+                guia2PNacimiento: this.getValueForm('guia2PNacimiento'),
+                guia3PPrimerMes: this.getValueForm('guia3PPrimerMes'),
+                guia4P1A3Meses: this.getValueForm('guia4P1A3Meses'),
+                guia5P4A6Meses: this.getValueForm('guia5P4A6Meses'),
+                guia6P6A8Meses: this.getValueForm('guia6P6A8Meses'),
+                guia7P9A12Meses: this.getValueForm('guia7P9A12Meses'),
+                guia8P12A17Meses: this.getValueForm('guia8P12A17Meses'),
+                guia9P18A23Meses: this.getValueForm('guia9P18A23Meses'),
+                guia10P2A3Anios: this.getValueForm('guia10P2A3Anios'),
+                guia11P3Anios: this.getValueForm('guia11P3Anios'),
+                guia12P4Anios: this.getValueForm('guia12P4Anios'),
+                guia13P5Anios: this.getValueForm('guia13P5Anios'),
+                guia14P4Anios: this.getValueForm('guia14P4Anios'),
             }
-
         };
 
         console.log(req)
