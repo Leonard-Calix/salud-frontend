@@ -1,60 +1,86 @@
 <div class="main-content">
     <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-md-6">
-                <lbd-chart
-                  [title]="'24 Hours Performance'"
-                  [subtitle]="'Line Chart'"
-                  [chartType]="dataChartType"
-                  [chartData]="dataChartData"
-                  [chartOptions]="dataChartOptions"
-                  [withHr]="false">
-                </lbd-chart>
-            </div>
+       
 
-            <div class="col-md-6">
-                <div class="card">
-                    <lbd-chart
-                      [title]="'NASDAQ: AAPL'"
-                      [subtitle]="'Line Chart with Points'"
-                      [chartType]="data2ChartType"
-                      [chartData]="data2ChartData"
-                      [chartOptions]="data2ChartOptions"
-                      [withHr]="false">
-                    </lbd-chart>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Filtros de Datos</h4>
+                            <p class="category">Seleccione los filtros para visualizar los datos</p>
+                        </div>
+                        <div class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Departamento</label>
+                                            <select class="form-control"  name="department">
+                                                <option value="">Seleccione Departamento</option>
+                                                <option *ngFor="let dept of " [value]="dept">{{dept}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Municipio</label>
+                                            <select class="form-control"  name="municipio">
+                                                <option value="">Seleccione Municipio</option>
+                                                <option *ngFor="let mun " [value]="mun">{{mun}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Aldea</label>
+                                            <select class="form-control"  name="aldea">
+                                                <option value="">Seleccione Aldea</option>
+                                                <option *ngFor="let aldea of " [value]="aldea">{{aldea}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Año</label>
+                                            <select class="form-control"  name="year">
+                                                <option value="">Seleccione Año</option>
+                                                <option *ngFor="let year of" [value]="year">{{year}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Trimestre</label>
+                                            <select class="form-control"  name="quarter">
+                                                <option value="">Seleccione Trimestre</option>
+                                                <option *ngFor="let quarter of " [value]="quarter">{{quarter}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-info btn-fill" >Aplicar Filtros</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <lbd-chart
+                          [title]="'Public Preferences'"
+                          [subtitle]="'Pie Chart'"
+                          [chartType]="emailChartType"
+                          [chartData]="emailChartData"
+                          [legendItems]="emailChartLegendItems"
+                          [withHr]="false">
+                        </lbd-chart>
+                    </div>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <lbd-chart
-                      [title]="'Users Behavior'"
-                      [subtitle]="'Multiple Lines Charts'"
-                      [chartType]="hoursChartType"
-                      [chartData]="hoursChartData"
-                      [chartOptions]="hoursChartOptions"
-                      [chartResponsive]="hoursChartResponsive"
-                      [legendItems]="hoursChartLegendItems"
-                      [withHr]="false">
-                    </lbd-chart>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <lbd-chart
-                      [title]="'Public Preferences'"
-                      [subtitle]="'Pie Chart'"
-                      [chartType]="emailChartType"
-                      [chartData]="emailChartData"
-                      [legendItems]="emailChartLegendItems"
-                      [withHr]="false">
-                    </lbd-chart>
-                </div>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -87,4 +113,4 @@
         </div>
 
     </div>
-</div>
+

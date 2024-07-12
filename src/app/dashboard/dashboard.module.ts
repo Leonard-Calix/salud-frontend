@@ -12,6 +12,7 @@ import { UsersComponent } from '../pages/users/users.component';
 import { RolesComponent } from '../pages/roles/roles.component';
 import { CommunitiesComponent } from '../pages/communities/communities.component';
 import { MonitoringComponent } from '../pages/monitoring/monitoring.component';
+import { ChartsComponent } from '../charts/charts.component';
 import { NewUsersComponent } from '../pages/new-users/new-users.component';
 
 @NgModule({

@@ -7,7 +7,7 @@ import { RolesComponent } from 'app/pages/roles/roles.component';
 import { UsersComponent } from 'app/pages/users/users.component';
 import { MonitoringComponent } from 'app/pages/monitoring/monitoring.component';
 import { NewUsersComponent } from 'app/pages/new-users/new-users.component';
-
+import { ChartsComponent } from '../charts/charts.component';
 
 
 export const DashboardRoutes: Routes = [{
@@ -44,6 +44,10 @@ export const DashboardRoutes: Routes = [{
         {
             path: 'new-monitoring',
             component: MonitoringComponent
+        },
+        {
+            path: 'charts',
+            component: ChartsComponent
         },
     ]
 }];
