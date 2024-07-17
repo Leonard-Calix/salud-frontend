@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import * as Chartist from 'chartist';
 
 export interface LegendItem {
@@ -56,6 +56,7 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
   public chartId: string;
 
   constructor() {
+    LbdChartComponent.currentId = 1;
   }
 
   public ngOnInit(): void {
@@ -76,4 +77,15 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
         break;
     }
   }
+
+
+  updatePieChart(id: string, chartData: any) {
+    this.chartData = chartData;
+    new Chartist.Pie(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive).update(chartData);
+  }
+
+  updateBarChart(id: string, chartData: any, chartOptions: any, chartResponsive: any[]) {
+    new Chartist.Bar(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive).update(chartData);
+  }
+
 }

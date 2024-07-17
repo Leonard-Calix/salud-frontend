@@ -1,116 +1,116 @@
 <div class="main-content">
     <div class="container-fluid">
 
-       
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="header">
-                            <h4 class="title">Filtros de Datos</h4>
-                            <p class="category">Seleccione los filtros para visualizar los datos</p>
-                        </div>
-                        <div class="content">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Departamento</label>
-                                            <select class="form-control"  name="department">
-                                                <option value="">Seleccione Departamento</option>
-                                                <option *ngFor="let dept of " [value]="dept">{{dept}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Municipio</label>
-                                            <select class="form-control"  name="municipio">
-                                                <option value="">Seleccione Municipio</option>
-                                                <option *ngFor="let mun " [value]="mun">{{mun}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Aldea</label>
-                                            <select class="form-control"  name="aldea">
-                                                <option value="">Seleccione Aldea</option>
-                                                <option *ngFor="let aldea of " [value]="aldea">{{aldea}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Año</label>
-                                            <select class="form-control"  name="year">
-                                                <option value="">Seleccione Año</option>
-                                                <option *ngFor="let year of" [value]="year">{{year}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Trimestre</label>
-                                            <select class="form-control"  name="quarter">
-                                                <option value="">Seleccione Trimestre</option>
-                                                <option *ngFor="let quarter of " [value]="quarter">{{quarter}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-info btn-fill" >Aplicar Filtros</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <lbd-chart
-                          [title]="'Public Preferences'"
-                          [subtitle]="'Pie Chart'"
-                          [chartType]="emailChartType"
-                          [chartData]="emailChartData"
-                          [legendItems]="emailChartLegendItems"
-                          [withHr]="false">
-                        </lbd-chart>
-                    </div>
-            </div>
-            
-        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <lbd-chart
-                      [title]="'Views'"
-                      [subtitle]="'Bar Chart'"
-                      [chartType]="viewsChartType"
-                      [chartData]="viewsChartData"
-                      [chartOptions]="viewsChartOptions"
-                      [chartResponsive]="viewsChartResponsive"
-                      [withHr]="false">
+                    <div class="header">
+                        <h4 class="title">Filtros de Datos</h4>
+                        <p class="category">Seleccione los filtros para visualizar los datos</p>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Departamento</label>
+                                        <select class="form-control" (change)="getMunicipalitiesByDeparment($event)">
+                                            <option value="0">-Seleccione un departamento-</option>
+                                            <option *ngFor="let item of departments" [value]="item.id">{{ item.nameD }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Municipio</label>
+                                        <select class="form-control" (change)="getCommunities($event)">
+                                            <option value="0">-- Seleccione un Municipio --</option>
+                                            <option *ngFor="let item of municipalities" [value]="item.id">{{ item.nameM
+                                                }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label>Aldea</label>
+                                        <select class="form-control" [(ngModel)]="communityId" >
+                                            <option value="0">-- Seleccione una cominidad --</option>
+                                            <option *ngFor="let item of communities" [value]="item.id">{{ item.nameC }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Año</label>
+                                        <select class="form-control" [(ngModel)]="anio">
+                                            <option value="0">Seleccione Año</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Trimestre</label>
+                                        <select class="form-control" [(ngModel)]="trimestre">
+                                            <option value="0">Seleccione Trimestre</option>
+                                            <option value="1">Primer trimestre</option>
+                                            <option value="2">Segundo trimestre</option>
+                                            <option value="3">Tercero trimestre</option>
+                                            <option value="4">Cuarto trimestre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button (click)="getGrafico1()" type="button" class="btn btn-info btn-fill">Aplicar
+                                Filtros</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <lbd-chart #pieChart [title]="'Cantidad tareas ejecutadas'" [subtitle]="'Porcentaje'"
+                        [chartType]="emailChartType" [chartData]="emailChartData" [legendItems]="emailChartLegendItems"
+                        [footerText]="'Primer trimestre 2024'" [withHr]="false">
                     </lbd-chart>
                 </div>
             </div>
 
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <lbd-chart
-                      [title]="'Activity'"
-                      [subtitle]="'Multiple Bars Chart'"
-                      [chartType]="activityChartType"
-                      [chartData]="activityChartData"
-                      [chartOptions]="activityChartOptions"
-                      [chartResponsive]="activityChartResponsive"
-                      [withHr]="false">
+                    <lbd-chart #barChart [title]="'Views'" [subtitle]="'Bar Chart'" [chartType]="viewsChartType"
+                        [chartData]="viewsChartData" [chartOptions]="viewsChartOptions"
+                        [chartResponsive]="viewsChartResponsive" [withHr]="false">
+                    </lbd-chart>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <lbd-chart #barChart2 [title]="'Activity'" [subtitle]="'Multiple Bars Chart'"
+                        [chartType]="activityChartType" [chartData]="activityChartData"
+                        [chartOptions]="activityChartOptions" [chartResponsive]="activityChartResponsive"
+                        [withHr]="false">
                     </lbd-chart>
                 </div>
             </div>
         </div>
 
     </div>
-
