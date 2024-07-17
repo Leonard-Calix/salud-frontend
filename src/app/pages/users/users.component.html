@@ -10,17 +10,38 @@
 
                         <a routerLink="/new-user" class="btn btn-success btn-fill btn-wd">
                             Agregar
-                          </a>
-                          <br><br>
+                        </a>
+                        <br><br>
 
-
-                          
-
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Cambia Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of data">
+                                    <td colspan="1">{{ item.firstName }}</td>
+                                    <td colspan="1">{{ item.lastName }}</td>
+                                    <td colspan="1">{{ item.email }}</td>
+                                    <td colspan="1">{{ item.userName }}</td>
+                                    <td colspan="1">{{ item.active ? 'ACTIVO' : 'INACTIVO' }}</td>
+                                    <button
+                                        (click)="removeUser(item.id)"
+                                        class="btn btn-success btn-fill btn-wd">
+                                        Eliminar
+                                    </button>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            
-
         </div>
     </div>
 </div>

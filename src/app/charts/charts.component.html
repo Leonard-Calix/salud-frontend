@@ -85,7 +85,7 @@
                 <div class="card">
                     <lbd-chart #pieChart [title]="'Cantidad tareas ejecutadas'" [subtitle]="'Porcentaje'"
                         [chartType]="emailChartType" [chartData]="emailChartData" [legendItems]="emailChartLegendItems"
-                        [footerText]="'Primer trimestre 2024'" [withHr]="false">
+                        [footerText]="'Primer trimestre 2024'" [withHr]="true">
                     </lbd-chart>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 <div class="card">
                     <lbd-chart #barChart [title]="'Views'" [subtitle]="'Bar Chart'" [chartType]="viewsChartType"
                         [chartData]="viewsChartData" [chartOptions]="viewsChartOptions"
-                        [chartResponsive]="viewsChartResponsive" [withHr]="false">
+                        [chartResponsive]="viewsChartResponsive" [withHr]="true">
                     </lbd-chart>
 
                 </div>
@@ -107,7 +107,7 @@
                     <lbd-chart #barChart2 [title]="'Activity'" [subtitle]="'Multiple Bars Chart'"
                         [chartType]="activityChartType" [chartData]="activityChartData"
                         [chartOptions]="activityChartOptions" [chartResponsive]="activityChartResponsive"
-                        [withHr]="false">
+                        [withHr]="true">
                     </lbd-chart>
                 </div>
             </div>

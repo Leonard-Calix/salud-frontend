@@ -32,7 +32,14 @@ export class UsersService {
 
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
-    return this.http.post(`${this.baseUrl}/users`, { headers });
+    return this.http.get(`${this.baseUrl}/users`, { headers });
+  }
+
+  remove(id:string): Observable<any> {
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+
+    return this.http.delete(`${this.baseUrl}/users/` + id, { headers });
   }
 
 }

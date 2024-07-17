@@ -96,13 +96,6 @@ export class ChartsComponent implements OnInit {
       { title: 'No Ejecutadas', imageClass: 'fa fa-circle text-danger' },
     ];
 
-    this.dataChartType = ChartType.Line;
-    this.dataChartData = {
-      labels: ['6pm', '9pm', '11pm', '2am', '4am', '8am', '2pm', '5pm', '8pm', '11pm', '4am'],
-      series: [
-        [1, 6, 8, 7, 4, 7, 8, 12, 16, 17, 14, 13]
-      ]
-    };
 
     this.dataChartOptions = {
       showPoint: false,
@@ -119,71 +112,6 @@ export class ChartsComponent implements OnInit {
       high: 16
     };
 
-    this.data2ChartType = ChartType.Line;
-    this.data2ChartData = {
-      labels: ['\'07', '\'08', '\'09', '\'10', '\'11', '\'12', '\'13', '\'14', '\'15'],
-      series: [
-        [22.20, 34.90, 42.28, 51.93, 62.21, 80.23, 62.21, 82.12, 102.50, 107.23]
-      ]
-    };
-    this.data2ChartOptions = {
-      lineSmooth: false,
-      height: "260px",
-      axisY: {
-        offset: 40,
-        labelInterpolationFnc: function (value) {
-          return '$' + value;
-        }
-
-      },
-      low: 10,
-      high: 110,
-      classNames: {
-        point: 'ct-point ct-green',
-        line: 'ct-line ct-green'
-      }
-    };
-
-    this.hoursChartType = ChartType.Line;
-    this.hoursChartData = {
-      labels: ['\'06', '\'07', '\'08', '\'09', '\'10', '\'11', '\'12', '\'13', '\'14', '\'15'],
-      series: [
-        [287, 385, 490, 554, 586, 698, 695, 752, 788, 846, 944],
-        [67, 152, 143, 287, 335, 435, 437, 539, 542, 544, 647],
-        [23, 113, 67, 190, 239, 307, 308, 439, 410, 410, 509]
-      ]
-    };
-
-    this.hoursChartOptions = {
-      low: 0,
-      high: 1000,
-      showArea: false,
-      height: '245px',
-      axisX: {
-        showGrid: true,
-      },
-      lineSmooth: Chartist.Interpolation.simple({
-        divisor: 3
-      }),
-      showLine: true,
-      showPoint: true,
-    };
-
-    this.hoursChartResponsive = [
-      ['screen and (max-width: 640px)', {
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
-    ];
-
-    this.hoursChartLegendItems = [
-      { title: 'Open', imageClass: 'fa fa-circle text-info' },
-      { title: 'Click', imageClass: 'fa fa-circle text-danger' },
-      { title: 'Click Second Time', imageClass: 'fa fa-circle text-warning' }
-    ];
 
     this.viewsChartType = ChartType.Bar;
     this.viewsChartData = {
@@ -242,7 +170,7 @@ export class ChartsComponent implements OnInit {
       }]
     ];
 
-    this.getDeparments()
+    this.getDeparments();
 
   }
 
@@ -255,8 +183,6 @@ export class ChartsComponent implements OnInit {
       monitoreoId: Number(this.communityId)
     };
 
-    console.log(req)
-
     this.graphicsService.getGraphicsFamiliasAtendidas(req).subscribe((response: any) => {
 
       if (response.data.length > 0) {
@@ -267,19 +193,48 @@ export class ChartsComponent implements OnInit {
           labels: temp1,
           series: temp2
         };
-
         this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
-        this.loading = false;
+        this.pieChartComponent.footerText = 'Consulta exitosa';
+      } else {
+        this.emailChartData = {
+          labels: ['0%', '0%'],
+          series: [0, 0]
+        };
+        this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
+        this.pieChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
       }
+      this.loading = false;
 
     });
+
+
+    this.graphicsService.getGraphicsDesnutricion(req)
+      .subscribe((response: any) => {
+        console.log(response);
+
+        if (response.data.length > 0) {
+
+          // Logicas
+        }
+
+      });
+
+    this.graphicsService.getGraphicsDesnutricion2(req)
+      .subscribe((response: any) => {
+        console.log(response);
+
+        if (response.data.length > 0) {
+
+          // Logicas
+        }
+      });
+
   }
 
 
   getDeparments() {
-    this.deparmentService.getAll().subscribe(((res: any) => {
-      this.departments = res.data;
-    }));
+    this.deparmentService.getAll()
+      .subscribe((res: any) => this.departments = res.data);
   }
 
   getMunicipalitiesByDeparment(event: any) {
@@ -289,9 +244,8 @@ export class ChartsComponent implements OnInit {
 
     this.departmentId = departmentId;
 
-    this.municipalitiesService.getByDepartmentId(Number(departmentId)).subscribe(((res: any) => {
-      this.municipalities = res.data;
-    }));
+    this.municipalitiesService.getByDepartmentId(Number(departmentId))
+      .subscribe(((res: any) => this.municipalities = res.data));
   }
 
   getCommunities(event: any) {
@@ -299,9 +253,8 @@ export class ChartsComponent implements OnInit {
 
     this.municipalityId = municipalityId;
 
-    this.communitiesService.getByCommunityByMunicipalityId(Number(municipalityId)).subscribe(((res: any) => {
-      this.communities = res.data;
-    }));
+    this.communitiesService.getByCommunityByMunicipalityId(Number(municipalityId))
+      .subscribe((res: any) => this.communities = res.data);
   }
 
   getTrimestres(trimestre: string) {

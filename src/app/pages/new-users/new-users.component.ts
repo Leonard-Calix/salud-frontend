@@ -38,18 +38,29 @@ export class NewUsersComponent {
         },
         icon: "warning"
       })
-
       return;
     }
 
+    if (this.formGruopUser.value.password != this.formGruopUser.value.password) {
+
+      Swal.fire({
+        title: "Contraseña",
+        text: "Las contraseñas no coinciden",
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: "btn btn-fill btn-success",
+        },
+        icon: "success"
+      });
+      return;
+    }
 
     if ((this.formGruopUser.value.password == this.formGruopUser.value.password)) {
 
-      
+      this.userService.create(this.formGruopUser.value).subscribe(
 
-      this.userService.create(this.formGruopUser.value).subscribe({
-
-        complete() {
+        response => {
+          console.log(response)
           Swal.fire({
             title: "Exitoso",
             text: "Usuario registrado con exito",
@@ -59,37 +70,21 @@ export class NewUsersComponent {
             },
             icon: "success"
           });
+          
+          this.router.navigateByUrl('/users-list');
         },
-
-        
-
-        error(err) {
-          console.log(err)
-
+        error => {
           Swal.fire({
             title: "Error",
-            text: err.error.msg,
+            text: error.error.msg,
             buttonsStyling: false,
             customClass: {
               confirmButton: "btn btn-fill btn-success",
             },
             icon: "error"
           })
-        },
-
-      });
-
-
-    } else {
-      Swal.fire({
-        title: "Contraseña",
-        text: "Las contraseñas no coinciden",
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: "btn btn-fill btn-success",
-        },
-        icon: "success"
-      })
+        }
+      );
     }
   }
 

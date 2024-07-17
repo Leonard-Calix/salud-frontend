@@ -29,4 +29,11 @@ export class GraphicsService {
 
     return this.http.post(`${this.baseUrl}/graficos/porcentaje-desnutricion`, req, { headers });
   }
+
+  getGraphicsDesnutricion2(req: any) {
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-desnutricion`, req, { headers });
+  }
 }
