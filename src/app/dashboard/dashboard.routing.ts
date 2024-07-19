@@ -49,5 +49,6 @@ export const DashboardRoutes: Routes = [{
             path: 'charts',
             component: ChartsComponent
         },
+       
     ]
 }];

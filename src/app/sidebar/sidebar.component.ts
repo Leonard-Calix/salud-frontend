@@ -31,7 +31,7 @@ export const ROUTES: RouteInfo[] = [
         path: '/maintenance',
         title: 'Encuestas',
         type: 'link',
-        icontype: 'pe-7s-graph'
+        icontype: 'pe-7s-note2'
     },
     {
         path: '/users-list',
@@ -46,6 +46,7 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'pe-7s-graph1'
 
     },
+
 /*
     {
         path: '/components',
