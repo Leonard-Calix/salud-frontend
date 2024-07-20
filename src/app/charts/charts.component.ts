@@ -37,6 +37,10 @@ export class ChartsComponent implements OnInit {
   public desnutricionChartData: any;
   public desnutricionemailChartLegendItems: LegendItem[];
 
+  public generoChartType: ChartType;
+  public generoChartData: any;
+  public generoChartLegendItems: LegendItem[];
+
   public hoursChartType: ChartType;
   public hoursChartData: any;
   public hoursChartOptions: any;
@@ -58,7 +62,7 @@ export class ChartsComponent implements OnInit {
   loading: boolean = true;
   @ViewChild('pieChart') pieChartComponent!: LbdChartComponent
   @ViewChild('pieChartD') pieDesnutricionChartComponent!: LbdChartComponent
-  @ViewChild('barChart') barChart2Componen!: LbdChartComponent
+  @ViewChild('pieChartN') pieNinosChartComponent!: LbdChartComponent
 
   departments: Department[] = [];
   municipalities: Municipality[] = [];
@@ -91,7 +95,7 @@ export class ChartsComponent implements OnInit {
     //GRAFICO DE PASTEL DE PROGRAMADAS/EJECUTADAS
     this.emailChartType = ChartType.Pie;
     this.emailChartData = {
-      labels: ['0%', '100%'],
+      labels: ['0%', '0%'],
       series: [0, 100]
     };
     this.emailChartLegendItems = [
@@ -102,12 +106,23 @@ export class ChartsComponent implements OnInit {
     //GRAFICO DE DESNUTRICION
     this.desnutricionChartType = ChartType.Pie;
     this.desnutricionChartData = {
-      labels: ['100%', '0%'],
+      labels: ['0%', '0%'],
       series: [100, 0]
     };
     this.desnutricionemailChartLegendItems = [
-      { title: 'Desnutridos', imageClass: 'fa fa-circle text-info' },
-      { title: 'No Desnutridos', imageClass: 'fa fa-circle text-danger' },
+      { title: 'No Desnutridos', imageClass: 'fa fa-circle text-info' },
+      { title: 'Desnutridos', imageClass: 'fa fa-circle text-danger' },
+    ];
+
+    //GRAFICO DE NIÑO
+    this.generoChartType = ChartType.Pie;
+    this.generoChartData = {
+      labels: ['0%', '0%'],
+      series: [100, 0]
+    };
+    this.generoChartLegendItems = [
+      { title: 'Femenino', imageClass: 'fa fa-circle text-info' },
+      { title: 'Masculino', imageClass: 'fa fa-circle text-danger' },
     ];
 
     this.dataChartOptions = {
@@ -242,8 +257,8 @@ export class ChartsComponent implements OnInit {
 
           const { data } = response;
 
-          let temp1 = [String(data.desnutridos).concat('%'), String(data.noDesnutridos).concat('%')];
-          let temp2 = [data.desnutridos, data.noDesnutridos];
+          let temp1 = [String(data.noDesnutridos).concat('%'), String(data.desnutridos).concat('%')];
+          let temp2 = [data.noDesnutridos, data.desnutridos];
 
           this.desnutricionChartData = {
             labels: temp1,
@@ -261,16 +276,42 @@ export class ChartsComponent implements OnInit {
           this.pieDesnutricionChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
         }
       });
-    /*
-        this.graphicsService.getGraphicsDesnutricion2(req)
-          .subscribe((response: any) => {
-    
-            if (response.data.length > 0) {
-    
-              // Logicas
-            }
-          });
-          */
+
+    this.graphicsService.getGraphicsNinos(req)
+      .subscribe((response: any) => {
+
+        if (response.ok) {
+
+          const { data } = response;
+
+          let temp1 = [String(data.pFemenino).concat('%'), String(data.pMasculino).concat('%')];
+          let temp2 = [data.pFemenino, data.pMasculino];
+
+          this.generoChartData = {
+            labels: temp1,
+            series: temp2
+          };
+          this.pieNinosChartComponent.updatePieChart('lbd-chart-3', this.generoChartData);
+          this.pieNinosChartComponent.footerText = 'Consulta exitosa';
+
+        } else {
+          this.desnutricionChartData = {
+            labels: ['0%', '0%'],
+            series: [0, 0]
+          };
+          this.pieNinosChartComponent.updatePieChart('lbd-chart-3', this.generoChartData);
+          this.pieNinosChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
+        }
+
+      });
+
+      this.graphicsService.getGraphicsGeneral(req)
+      .subscribe((response: any) => {
+
+       console.log(response)
+
+      });
+
     this.loading = false;
 
   }
