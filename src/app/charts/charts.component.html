@@ -78,6 +78,8 @@
                             <button (click)="getGrafico1()" type="button" class="btn btn-info btn-fill">Aplicar
                                 Filtros</button>
                         </form>
+                        <br>
+                        <p>hola mundo {{ anio }} </p>
                     </div>
                 </div>
             </div>
@@ -94,14 +96,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <lbd-chart #barChart [title]="'Views'" [subtitle]="'Bar Chart'" [chartType]="viewsChartType"
-                        [chartData]="viewsChartData" [chartOptions]="viewsChartOptions"
-                        [chartResponsive]="viewsChartResponsive" [withHr]="true">
+                    <lbd-chart #pieChartD [title]="'Niños desnutridos'" [subtitle]="'Porcentaje'"
+                        [chartType]="desnutricionChartType" [chartData]="desnutricionChartData" [legendItems]="desnutricionemailChartLegendItems"
+                        [footerText]="'Primer trimestre 2024'" [withHr]="true">
                     </lbd-chart>
-
                 </div>
             </div>
-
+<!--
             <div class="col-md-6">
                 <div class="card">
                     <lbd-chart #barChart2 [title]="'Activity'" [subtitle]="'Multiple Bars Chart'"
@@ -112,5 +113,5 @@
                 </div>
             </div>
         </div>
-
+-->
     </div>

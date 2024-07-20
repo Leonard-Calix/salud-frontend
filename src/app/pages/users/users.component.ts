@@ -42,10 +42,12 @@ export class UsersComponent implements OnInit {
       },
       buttonsStyling: false
     }).then((result) => {
+
       if (result.value) {
 
         this.userService.remove(id).subscribe(
           response => {
+            console.log(response)
             Swal.fire({
               title: 'Eliminado!',
               text: 'Your imaginary file has been deleted.',
@@ -59,6 +61,9 @@ export class UsersComponent implements OnInit {
           },
 
           error => {
+
+            console.log(error)
+
             Swal.fire({
               title: "Error",
               text: error.error.msg,

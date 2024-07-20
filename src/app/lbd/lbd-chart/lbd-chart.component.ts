@@ -61,6 +61,8 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.chartId = `lbd-chart-${LbdChartComponent.currentId++}`;
+
+    console.log(this.chartId)
   }
 
   public ngAfterViewInit(): void {
@@ -81,7 +83,7 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
 
   updatePieChart(id: string, chartData: any) {
     this.chartData = chartData;
-    new Chartist.Pie(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive).update(chartData);
+    new Chartist.Pie(`#${id}`, this.chartData, this.chartOptions, this.chartResponsive).update(chartData);
   }
 
   updateBarChart(id: string, chartData: any, chartOptions: any, chartResponsive: any[]) {

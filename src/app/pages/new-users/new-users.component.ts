@@ -13,12 +13,12 @@ export class NewUsersComponent {
 
   formGruopUser = new FormGroup({
 
-    firstName: new FormControl("Gerson", Validators.required),
-    lastName: new FormControl("Adonay Moreira", Validators.required),
-    userName: new FormControl("gmoreira", Validators.required),
-    email: new FormControl("gmoreira@gmail.com", Validators.required),
-    password: new FormControl("asd456", Validators.required),
-    confirmation: new FormControl("asd456", [Validators.required]),
+    firstName: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
+    userName: new FormControl("", Validators.required),
+    email: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required),//asd456
+    confirmation: new FormControl("", [Validators.required]),
   });
 
   constructor(private userService: UsersService, private router: Router) {

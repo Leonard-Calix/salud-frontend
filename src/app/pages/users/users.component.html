@@ -31,9 +31,7 @@
                                     <td colspan="1">{{ item.email }}</td>
                                     <td colspan="1">{{ item.userName }}</td>
                                     <td colspan="1">{{ item.active ? 'ACTIVO' : 'INACTIVO' }}</td>
-                                    <button
-                                        (click)="removeUser(item.id)"
-                                        class="btn btn-danger btn-fill btn-wd">
+                                    <button (click)="removeUser(item.id)" class="btn btn-danger btn-fill btn-wd">
                                         Eliminar
                                     </button>
                                 </tr>

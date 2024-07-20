@@ -11,6 +11,7 @@ import { ServeysService } from 'app/services/serveys.service';
 import { CommunitiesService } from 'app/services/communities.service';
 import { MunicipalitiesService } from 'app/services/municipalities.service';
 import { DepartmentService } from 'app/services/department.service';
+import Swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -32,6 +33,10 @@ export class ChartsComponent implements OnInit {
   public emailChartData: any;
   public emailChartLegendItems: LegendItem[];
 
+  public desnutricionChartType: ChartType;
+  public desnutricionChartData: any;
+  public desnutricionemailChartLegendItems: LegendItem[];
+
   public hoursChartType: ChartType;
   public hoursChartData: any;
   public hoursChartOptions: any;
@@ -52,7 +57,7 @@ export class ChartsComponent implements OnInit {
 
   loading: boolean = true;
   @ViewChild('pieChart') pieChartComponent!: LbdChartComponent
-  @ViewChild('barChart') barChart1Componen!: LbdChartComponent
+  @ViewChild('pieChartD') pieDesnutricionChartComponent!: LbdChartComponent
   @ViewChild('barChart') barChart2Componen!: LbdChartComponent
 
   departments: Department[] = [];
@@ -64,8 +69,6 @@ export class ChartsComponent implements OnInit {
   departmentId: string = '0';
   trimestre: string = '0';
   anio: string = '0'
-
-
 
   formFilter = new FormGroup({
     departmentId: new FormControl('0', [Validators.required]),
@@ -79,23 +82,33 @@ export class ChartsComponent implements OnInit {
     private readonly deparmentService: DepartmentService,
     private readonly municipalitiesService: MunicipalitiesService,
     private readonly communitiesService: CommunitiesService,
-    private formBuilder: FormBuilder,
   ) {
 
   }
 
   ngOnInit() {
 
+    //GRAFICO DE PASTEL DE PROGRAMADAS/EJECUTADAS
     this.emailChartType = ChartType.Pie;
     this.emailChartData = {
-      labels: ['62%', '38%'],
-      series: [62, 38]
+      labels: ['0%', '100%'],
+      series: [0, 100]
     };
     this.emailChartLegendItems = [
       { title: 'Ejecutadas', imageClass: 'fa fa-circle text-info' },
       { title: 'No Ejecutadas', imageClass: 'fa fa-circle text-danger' },
     ];
 
+    //GRAFICO DE DESNUTRICION
+    this.desnutricionChartType = ChartType.Pie;
+    this.desnutricionChartData = {
+      labels: ['100%', '0%'],
+      series: [100, 0]
+    };
+    this.desnutricionemailChartLegendItems = [
+      { title: 'Desnutridos', imageClass: 'fa fa-circle text-info' },
+      { title: 'No Desnutridos', imageClass: 'fa fa-circle text-danger' },
+    ];
 
     this.dataChartOptions = {
       showPoint: false,
@@ -176,6 +189,20 @@ export class ChartsComponent implements OnInit {
 
   getGrafico1() {
 
+    if (!this.validarFormulario()) {
+
+      Swal.fire({
+        title: 'Error',
+        text: 'Formulario invalido',
+        icon: 'error',
+        customClass: {
+          confirmButton: "btn btn-fill btn-info",
+        },
+        buttonsStyling: false
+      })
+      return;
+    }
+
     let req = {
       anio: Number(this.anio),
       fechaFinal: this.getTrimestres(this.trimestre)[1],
@@ -183,54 +210,70 @@ export class ChartsComponent implements OnInit {
       monitoreoId: Number(this.communityId)
     };
 
-    this.graphicsService.getGraphicsFamiliasAtendidas(req).subscribe((response: any) => {
+    this.graphicsService.getGraphicsFamiliasAtendidas(req)
+      .subscribe((response: any) => {
 
-      if (response.data.length > 0) {
-        let temp1 = [String(response.data[0].PEjecutadas).concat('%'), String(response.data[0].PNoEjecutadas).concat('%')];
-        let temp2 = [response.data[0].PEjecutadas, response.data[0].PNoEjecutadas];
+        const { PEjecutadas, PNoEjecutadas } = response.data;
 
-        this.emailChartData = {
-          labels: temp1,
-          series: temp2
-        };
-        this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
-        this.pieChartComponent.footerText = 'Consulta exitosa';
-      } else {
-        this.emailChartData = {
-          labels: ['0%', '0%'],
-          series: [0, 0]
-        };
-        this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
-        this.pieChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
-      }
-      this.loading = false;
+        if (response.ok) {
+          let temp1 = [String(PEjecutadas).concat('%'), String(PNoEjecutadas).concat('%')];
+          let temp2 = [PEjecutadas, PNoEjecutadas];
 
-    });
+          this.emailChartData = {
+            labels: temp1,
+            series: temp2
+          };
+          this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
+          this.pieChartComponent.footerText = 'Consulta exitosa';
+        } else {
+          this.emailChartData = {
+            labels: ['0%', '0%'],
+            series: [0, 0]
+          };
+          this.pieChartComponent.updatePieChart('lbd-chart-1', this.emailChartData);
+          this.pieChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
+        }
+      });
 
 
     this.graphicsService.getGraphicsDesnutricion(req)
       .subscribe((response: any) => {
-        console.log(response);
+        if (response.ok) {
 
-        if (response.data.length > 0) {
+          const { data } = response;
 
-          // Logicas
+          let temp1 = [String(data.desnutridos).concat('%'), String(data.noDesnutridos).concat('%')];
+          let temp2 = [data.desnutridos, data.noDesnutridos];
+
+          this.desnutricionChartData = {
+            labels: temp1,
+            series: temp2
+          };
+          this.pieDesnutricionChartComponent.updatePieChart('lbd-chart-2', this.desnutricionChartData);
+          this.pieDesnutricionChartComponent.footerText = 'Consulta exitosa';
+
+        } else {
+          this.desnutricionChartData = {
+            labels: ['0%', '0%'],
+            series: [0, 0]
+          };
+          this.pieDesnutricionChartComponent.updatePieChart('lbd-chart-2', this.desnutricionChartData);
+          this.pieDesnutricionChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
         }
-
       });
-
-    this.graphicsService.getGraphicsDesnutricion2(req)
-      .subscribe((response: any) => {
-        console.log(response);
-
-        if (response.data.length > 0) {
-
-          // Logicas
-        }
-      });
+    /*
+        this.graphicsService.getGraphicsDesnutricion2(req)
+          .subscribe((response: any) => {
+    
+            if (response.data.length > 0) {
+    
+              // Logicas
+            }
+          });
+          */
+    this.loading = false;
 
   }
-
 
   getDeparments() {
     this.deparmentService.getAll()
@@ -270,6 +313,14 @@ export class ChartsComponent implements OnInit {
     if (trimestre === '4') {
       return ['2024-09-01', '2024-12-01']
     }
+  }
+
+  validarFormulario(): boolean {
+
+    if (this.departmentId == '0' || this.municipalityId == '0' || this.communityId == '0' || this.anio == '0' || this.trimestre == '0') {
+      return false
+    }
+    return true;
   }
 
 }
