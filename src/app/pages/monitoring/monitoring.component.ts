@@ -102,8 +102,8 @@ export class MonitoringComponent implements OnInit {
             semanas: [0, Validators.required],
 
             //form5
-            hospital: ["", Validators.required],
-            comunidad: ["", Validators.required],
+            hospital: [0, Validators.required],
+            comunidad: [0, Validators.required],
             consulta: [0, Validators.required],
 
             //form6

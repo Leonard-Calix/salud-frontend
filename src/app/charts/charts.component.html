@@ -17,7 +17,7 @@
                                     <div class="form-group">
                                         <label>Departamento</label>
                                         <select class="form-control" (change)="getMunicipalitiesByDeparment($event)">
-                                            <option value="0">-Seleccione un departamento-</option>
+                                            <option value="0">-Seleccione un Departamento-</option>
                                             <option *ngFor="let item of departments" [value]="item.id">{{ item.nameD }}
                                             </option>
                                         </select>
@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label>Aldea</label>
                                         <select class="form-control" [(ngModel)]="communityId">
-                                            <option value="0">-- Seleccione una cominidad --</option>
+                                            <option value="0">-- Seleccione una Comunidad --</option>
                                             <option *ngFor="let item of communities" [value]="item.id">{{ item.nameC }}
                                             </option>
                                         </select>
@@ -79,7 +79,7 @@
                                 Filtros</button>
                         </form>
                         <br>
-                        <p>hola mundo {{ anio }} </p>
+                        <p> {{ anio }} </p>
                     </div>
                 </div>
             </div>
