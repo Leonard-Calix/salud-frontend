@@ -1,10 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
-
-
-
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-bottom: 0;">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Filtros de Datos</h4>
@@ -12,14 +9,14 @@
                     </div>
                     <div class="content">
                         <form>
+                            <!-- Filtros -->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Departamento</label>
                                         <select class="form-control" (change)="getMunicipalitiesByDeparment($event)">
                                             <option value="0">-Seleccione un Departamento-</option>
-                                            <option *ngFor="let item of departments" [value]="item.id">{{ item.nameD }}
-                                            </option>
+                                            <option *ngFor="let item of departments" [value]="item.id">{{ item.nameD }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -29,26 +26,23 @@
                                         <label>Municipio</label>
                                         <select class="form-control" (change)="getCommunities($event)">
                                             <option value="0">-- Seleccione un Municipio --</option>
-                                            <option *ngFor="let item of municipalities" [value]="item.id">{{ item.nameM
-                                                }}</option>
+                                            <option *ngFor="let item of municipalities" [value]="item.id">{{ item.nameM }}</option>
                                         </select>
                                     </div>
                                 </div>
-
                             </div>
+
                             <div class="row">
                                 <div class="col-md-6">
-
                                     <div class="form-group">
                                         <label>Aldea</label>
                                         <select class="form-control" [(ngModel)]="communityId">
                                             <option value="0">-- Seleccione una Comunidad --</option>
-                                            <option *ngFor="let item of communities" [value]="item.id">{{ item.nameC }}
-                                            </option>
+                                            <option *ngFor="let item of communities" [value]="item.id">{{ item.nameC }}</option>
                                         </select>
                                     </div>
-
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Año</label>
@@ -61,6 +55,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -75,15 +70,59 @@
                                     </div>
                                 </div>
                             </div>
-                            <button (click)="getGrafico1()" type="button" class="btn btn-info btn-fill">Aplicar
-                                Filtros</button>
+
+                            <button (click)="getGrafico1()" type="button" class="btn btn-info btn-fill">Aplicar Filtros</button>
                         </form>
                         <br>
-                        <p> {{ anio }} </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+
+            <!-- Nueva tarjeta para mostrar los totales por trimestre (fuera de la tarjeta de filtros) -->
+            <div class="col-md-6" style="margin-bottom: -5;">
+                <div class="card">
+                    <div class="content">
+                        <h5>Total por Trimestre</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Primer Trimestre</th>
+                                    <th>Segundo Trimestre</th>
+                                    <th>Tercer Trimestre</th>
+                                    <th>Cuarto Trimestre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>% de Familias Atendidas</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>% de Niños y Niñas de 0-6 Años Atendidos</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>% de Niñas y Niños que Reciben Tratamiento RUFT</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjetas con gráficos -->
+            <div class="col-md-12" style="margin-bottom: 0;">
                 <div class="card">
                     <lbd-chart #pieChart [title]="'Cantidad tareas ejecutadas'" [subtitle]="'Porcentaje'"
                         [chartType]="emailChartType" [chartData]="emailChartData" [legendItems]="emailChartLegendItems"
@@ -91,8 +130,8 @@
                     </lbd-chart>
                 </div>
             </div>
-
         </div>
+
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -103,6 +142,7 @@
                     </lbd-chart>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="card">
                     <lbd-chart #pieChartN [title]="'Detalle Niños'" [subtitle]="'Porcentaje'"
@@ -110,7 +150,7 @@
                         [legendItems]="generoChartLegendItems" [footerText]="'Primer trimestre 2024'" [withHr]="true">
                     </lbd-chart>
                 </div>
+            </div>
         </div>
     </div>
-    -
 </div>
