@@ -12,8 +12,10 @@ export class UsersComponent implements OnInit {
   data: any[] = [];
   currenUser: any;
 
-  constructor(private userService: UsersService) {
 
+
+  constructor(private userService: UsersService) {
+    
   }
   ngOnInit(): void {
     this.getUsers();
@@ -61,9 +63,6 @@ export class UsersComponent implements OnInit {
           },
 
           error => {
-
-            console.log(error)
-
             Swal.fire({
               title: "Error",
               text: error.error.msg,
