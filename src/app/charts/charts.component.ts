@@ -41,21 +41,21 @@ export class ChartsComponent implements OnInit {
   public generoChartData: any;
   public generoChartLegendItems: LegendItem[];
 
-  public hoursChartType: ChartType;
-  public hoursChartData: any;
-  public hoursChartOptions: any;
-  public hoursChartResponsive: any[];
-  public hoursChartLegendItems: LegendItem[];
+  //INICIO NUEVOS GRAFICO
+  public n1ChartType: ChartType;
+  public n1ChartData: any;
+  public n1ChartLegendItems: LegendItem[];
 
-  public viewsChartType: ChartType;
-  public viewsChartData: any;
-  public viewsChartOptions: any;
-  public viewsChartResponsive: any[];
+  public n2ChartType: ChartType;
+  public n2ChartData: any;
+  public n2ChartLegendItems: LegendItem[];
 
-  public activityChartType: ChartType;
-  public activityChartData: any;
-  public activityChartOptions: any;
-  public activityChartResponsive: any[];
+  public n3ChartType: ChartType;
+  public n3ChartData: any;
+  public n3ChartLegendItems: LegendItem[];
+
+  //FIN NUEVOS GRAFICO
+
 
   graphicsService = inject(GraphicsService);
 
@@ -63,10 +63,14 @@ export class ChartsComponent implements OnInit {
   @ViewChild('pieChart') pieChartComponent!: LbdChartComponent
   @ViewChild('pieChartD') pieDesnutricionChartComponent!: LbdChartComponent
   @ViewChild('pieChartN') pieNinosChartComponent!: LbdChartComponent
+  @ViewChild('pieChartN1') chartN1Component!: LbdChartComponent
+  @ViewChild('pieChartN2') chartN2Component!: LbdChartComponent
+  @ViewChild('pieChartN3') chartN3Component!: LbdChartComponent
 
   departments: Department[] = [];
   municipalities: Municipality[] = [];
   communities: Community[] = [];
+  datosGeneralFamiliasAtendidas: any[] = [];
 
   communityId: string = '0';
   municipalityId: string = '0';
@@ -109,9 +113,10 @@ export class ChartsComponent implements OnInit {
       labels: ['0%', '0%'],
       series: [100, 0]
     };
+
     this.desnutricionemailChartLegendItems = [
-      { title: 'No Desnutridos', imageClass: 'fa fa-circle text-info' },
-      { title: 'Desnutridos', imageClass: 'fa fa-circle text-danger' },
+      { title: 'Sin tratamiento', imageClass: 'fa fa-circle text-info' },
+      { title: 'Con tratamiento', imageClass: 'fa fa-circle text-danger' },
     ];
 
     //GRAFICO DE NIÑO
@@ -120,10 +125,51 @@ export class ChartsComponent implements OnInit {
       labels: ['0%', '0%'],
       series: [100, 0]
     };
+
     this.generoChartLegendItems = [
       { title: 'Femenino', imageClass: 'fa fa-circle text-info' },
       { title: 'Masculino', imageClass: 'fa fa-circle text-danger' },
     ];
+
+    //GRAFICOS NUEVOS
+
+    //chartN1Component
+    this.n1ChartType = ChartType.Pie;
+    this.n1ChartData = {
+      labels: ['0%', '0%'],
+      series: [100, 0]
+    };
+
+    this.n1ChartLegendItems = [
+      { title: 'POR DEFINIR N1', imageClass: 'fa fa-circle text-info' },
+      { title: 'POR DEFINIR N1', imageClass: 'fa fa-circle text-danger' },
+    ];
+
+    //chartN1Component
+    this.n2ChartType = ChartType.Pie;
+    this.n2ChartData = {
+      labels: ['0%', '0%'],
+      series: [100, 0]
+    };
+
+    this.n2ChartLegendItems = [
+      { title: 'POR DEFINIR N2', imageClass: 'fa fa-circle text-info' },
+      { title: 'POR DEFINIR N2', imageClass: 'fa fa-circle text-danger' },
+    ];
+
+    //chartN1Component
+    this.n3ChartType = ChartType.Pie;
+    this.n3ChartData = {
+      labels: ['0%', '0%'],
+      series: [100, 0]
+    };
+
+    this.n3ChartLegendItems = [
+      { title: 'POR DEFINIR N3', imageClass: 'fa fa-circle text-info' },
+      { title: 'POR DEFINIR N3', imageClass: 'fa fa-circle text-danger' },
+    ];
+
+    //FIN GRAFICOS NUEVOS
 
     this.dataChartOptions = {
       showPoint: false,
@@ -140,69 +186,13 @@ export class ChartsComponent implements OnInit {
       high: 16
     };
 
-
-    this.viewsChartType = ChartType.Bar;
-    this.viewsChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-      ]
-    };
-
-    this.viewsChartOptions = {
-      seriesBarDistance: 10,
-      classNames: {
-        bar: 'ct-bar ct-azure'
-      },
-      axisX: {
-        showGrid: false
-      }
-    };
-
-    this.viewsChartResponsive = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
-    ];
-
-    this.activityChartType = ChartType.Bar;
-    this.activityChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-        [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
-      ]
-    };
-
-    this.activityChartOptions = {
-      seriesBarDistance: 10,
-      axisX: {
-        showGrid: false
-      },
-      height: "245px"
-    };
-
-    this.activityChartResponsive = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
-    ];
-
     this.getDeparments();
 
   }
 
   getGrafico1() {
+
+    this.datosGeneralFamiliasAtendidas = [];
 
     if (!this.validarFormulario()) {
 
@@ -223,6 +213,11 @@ export class ChartsComponent implements OnInit {
       fechaFinal: this.getTrimestres(this.trimestre)[1],
       fechaInicial: this.getTrimestres(this.trimestre)[0],
       monitoreoId: Number(this.communityId)
+    };
+
+    let reqGeneral = {
+      anio: Number(this.anio),
+      communityId: Number(this.communityId)
     };
 
     this.graphicsService.getGraphicsFamiliasAtendidas(req)
@@ -249,7 +244,6 @@ export class ChartsComponent implements OnInit {
           this.pieChartComponent.footerText = 'No hay rergistros que mostrar para esa fecha';
         }
       });
-
 
     this.graphicsService.getGraphicsDesnutricion(req)
       .subscribe((response: any) => {
@@ -305,15 +299,29 @@ export class ChartsComponent implements OnInit {
 
       });
 
-      this.graphicsService.getGraphicsGeneral(req)
-      .subscribe((response: any) => {
+    this.graphicsService.getGraphicsGeneral(reqGeneral)
+      .subscribe((res: any) => {
 
-       console.log(response)
+        let response = res.data;
+
+        let item = {
+          label: '% de Familias Atendidas',
+          primer: response[0].programadas ? ((response[0].ejecutadas / response[0].programadas) * 100) : 0, //25
+          segundo: response[1].programadas ? ((response[1].ejecutadas / response[1].programadas) * 100) : 0, //10
+          tercero: response[2].programadas ? ((response[2].ejecutadas / response[2].programadas) * 100) : 0, //45
+          cuarto: response[3].programadas ? ((response[3].ejecutadas / response[3].programadas) * 100) : 0, //45
+          total: 0
+        }
+
+        let temp2 = { ...item }
+
+        temp2.total = (item.primer + item.segundo + item.tercero + item.cuarto) / 4;
+
+        this.datosGeneralFamiliasAtendidas.push(temp2);
 
       });
 
     this.loading = false;
-
   }
 
   getDeparments() {

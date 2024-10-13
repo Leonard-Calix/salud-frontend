@@ -43,4 +43,27 @@ export class GraphicsService {
 
     return this.http.post(`${this.baseUrl}/graficos/porcentaje-general-anio`, req, { headers });
   }
+
+  //INICIO NUEVOS GRAFICO
+
+  getGraphicsNew1(req: any) {
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g2`, req, { headers });
+  }
+
+  getGraphicsNew2(req: any) {
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g2`, req, { headers });
+  }
+
+  getGraphicsNew3(req: any) {
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g3`, req, { headers });
+  }
 }
