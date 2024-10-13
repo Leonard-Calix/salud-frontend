@@ -41,31 +41,12 @@ export class ChartsComponent implements OnInit {
   public generoChartData: any;
   public generoChartLegendItems: LegendItem[];
 
-  //INICIO NUEVOS GRAFICO
-  public n1ChartType: ChartType;
-  public n1ChartData: any;
-  public n1ChartLegendItems: LegendItem[];
-
-  public n2ChartType: ChartType;
-  public n2ChartData: any;
-  public n2ChartLegendItems: LegendItem[];
-
-  public n3ChartType: ChartType;
-  public n3ChartData: any;
-  public n3ChartLegendItems: LegendItem[];
-
-  //FIN NUEVOS GRAFICO
-
-
   graphicsService = inject(GraphicsService);
 
   loading: boolean = true;
   @ViewChild('pieChart') pieChartComponent!: LbdChartComponent
   @ViewChild('pieChartD') pieDesnutricionChartComponent!: LbdChartComponent
   @ViewChild('pieChartN') pieNinosChartComponent!: LbdChartComponent
-  @ViewChild('pieChartN1') chartN1Component!: LbdChartComponent
-  @ViewChild('pieChartN2') chartN2Component!: LbdChartComponent
-  @ViewChild('pieChartN3') chartN3Component!: LbdChartComponent
 
   departments: Department[] = [];
   municipalities: Municipality[] = [];
@@ -100,7 +81,7 @@ export class ChartsComponent implements OnInit {
     this.emailChartType = ChartType.Pie;
     this.emailChartData = {
       labels: ['0%', '0%'],
-      series: [0, 100]
+      series: [100, 0]
     };
     this.emailChartLegendItems = [
       { title: 'Ejecutadas', imageClass: 'fa fa-circle text-info' },
@@ -115,8 +96,8 @@ export class ChartsComponent implements OnInit {
     };
 
     this.desnutricionemailChartLegendItems = [
-      { title: 'Sin tratamiento', imageClass: 'fa fa-circle text-info' },
-      { title: 'Con tratamiento', imageClass: 'fa fa-circle text-danger' },
+      { title: 'Con tratamiento', imageClass: 'fa fa-circle text-warning' },
+      { title: 'Sin tratamiento', imageClass: 'fa fa-circle text-danger' },
     ];
 
     //GRAFICO DE NIÑO
@@ -130,46 +111,6 @@ export class ChartsComponent implements OnInit {
       { title: 'Femenino', imageClass: 'fa fa-circle text-info' },
       { title: 'Masculino', imageClass: 'fa fa-circle text-danger' },
     ];
-
-    //GRAFICOS NUEVOS
-
-    //chartN1Component
-    this.n1ChartType = ChartType.Pie;
-    this.n1ChartData = {
-      labels: ['0%', '0%'],
-      series: [100, 0]
-    };
-
-    this.n1ChartLegendItems = [
-      { title: 'POR DEFINIR N1', imageClass: 'fa fa-circle text-info' },
-      { title: 'POR DEFINIR N1', imageClass: 'fa fa-circle text-danger' },
-    ];
-
-    //chartN1Component
-    this.n2ChartType = ChartType.Pie;
-    this.n2ChartData = {
-      labels: ['0%', '0%'],
-      series: [100, 0]
-    };
-
-    this.n2ChartLegendItems = [
-      { title: 'POR DEFINIR N2', imageClass: 'fa fa-circle text-info' },
-      { title: 'POR DEFINIR N2', imageClass: 'fa fa-circle text-danger' },
-    ];
-
-    //chartN1Component
-    this.n3ChartType = ChartType.Pie;
-    this.n3ChartData = {
-      labels: ['0%', '0%'],
-      series: [100, 0]
-    };
-
-    this.n3ChartLegendItems = [
-      { title: 'POR DEFINIR N3', imageClass: 'fa fa-circle text-info' },
-      { title: 'POR DEFINIR N3', imageClass: 'fa fa-circle text-danger' },
-    ];
-
-    //FIN GRAFICOS NUEVOS
 
     this.dataChartOptions = {
       showPoint: false,
@@ -212,7 +153,7 @@ export class ChartsComponent implements OnInit {
       anio: Number(this.anio),
       fechaFinal: this.getTrimestres(this.trimestre)[1],
       fechaInicial: this.getTrimestres(this.trimestre)[0],
-      monitoreoId: Number(this.communityId)
+      communityId: Number(this.communityId)
     };
 
     let reqGeneral = {
@@ -251,8 +192,8 @@ export class ChartsComponent implements OnInit {
 
           const { data } = response;
 
-          let temp1 = [String(data.noDesnutridos).concat('%'), String(data.desnutridos).concat('%')];
-          let temp2 = [data.noDesnutridos, data.desnutridos];
+          let temp1 = [, String(data.desnutridos).concat('%'), String(data.noDesnutridos).concat('%')];
+          let temp2 = [, data.desnutridos, data.noDesnutridos];
 
           this.desnutricionChartData = {
             labels: temp1,
@@ -321,6 +262,50 @@ export class ChartsComponent implements OnInit {
 
       });
 
+    this.graphicsService.getGraphicsGeneralDesnutricion(reqGeneral)
+      .subscribe((res: any) => {
+
+        let response = res.data;
+
+        let item = {
+          label: '% de niñas y niños que reciben tratamiento RUFT',
+          primer: response[0].programadas ? ((response[0].ejecutadas / response[0].programadas) * 100) : 0,
+          segundo: response[1].programadas ? ((response[1].ejecutadas / response[1].programadas) * 100) : 0,
+          tercero: response[2].programadas ? ((response[2].ejecutadas / response[2].programadas) * 100) : 0,
+          cuarto: response[3].programadas ? ((response[3].ejecutadas / response[3].programadas) * 100) : 0,
+          total: 0
+        }
+
+        let temp2 = { ...item }
+
+        temp2.total = (item.primer + item.segundo + item.tercero + item.cuarto) / 4;
+
+        this.datosGeneralFamiliasAtendidas.push(temp2);
+
+      });
+
+    this.graphicsService.getGraphicsGeneralFamiliasAtendidas(reqGeneral)
+      .subscribe((res: any) => {
+
+        let response = res.data;
+
+        let item = {
+          label: '% niños y niñas de 0-6años atendidos',
+          primer: response[0].programadas ? ((response[0].ejecutadas / response[0].programadas) * 100) : 0,
+          segundo: response[1].programadas ? ((response[1].ejecutadas / response[1].programadas) * 100) : 0,
+          tercero: response[2].programadas ? ((response[2].ejecutadas / response[2].programadas) * 100) : 0,
+          cuarto: response[3].programadas ? ((response[3].ejecutadas / response[3].programadas) * 100) : 0,
+          total: 0
+        }
+
+        let temp2 = { ...item }
+
+        temp2.total = (item.primer + item.segundo + item.tercero + item.cuarto) / 4;
+
+        this.datosGeneralFamiliasAtendidas.push(temp2);
+
+      });
+
     this.loading = false;
   }
 
@@ -351,16 +336,16 @@ export class ChartsComponent implements OnInit {
 
   getTrimestres(trimestre: string) {
     if (trimestre === '1') {
-      return ['2024-01-01', '2024-04-01']
+      return [this.anio + '-01-01', this.anio +'-04-01']
     }
     if (trimestre === '2') {
-      return ['2024-04-01', '2024-06-01']
+      return [this.anio +'-04-01', this.anio +'-07-01']
     }
     if (trimestre === '3') {
-      return ['2024-06-01', '2024-09-01']
+      return [this.anio +'-07-01', this.anio +'-10-01']
     }
     if (trimestre === '4') {
-      return ['2024-09-01', '2024-12-01']
+      return [this.anio +'-10-01', this.anio +'-12-31']
     }
   }
 

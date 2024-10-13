@@ -54,6 +54,11 @@
                                             <option value="2023">2023</option>
                                             <option value="2024">2024</option>
                                             <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2030">2030</option>
                                         </select>
                                     </div>
                                 </div>
@@ -117,7 +122,8 @@
             <div class="col-md-12" style="margin-bottom: -5;">
                 <div class="card">
                     <div class="content">
-                        <h5>Total por Trimestre</h5>
+                        <h4 class="title" >Resumen general del año {{ anio }}</h4>
+                        <br>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -132,11 +138,11 @@
                             <tbody>
                                 <tr *ngFor="let valor of datosGeneralFamiliasAtendidas">
                                     <td> {{ valor.label }} </td>
-                                    <td>{{ valor.primer }} </td>
-                                    <td>{{ valor.segundo }} </td>
-                                    <td>{{ valor.tercero }} </td>
-                                    <td>{{ valor.cuarto }} </td>
-                                    <td>{{ valor.total }} </td>
+                                    <td>{{ valor.primer }}% </td>
+                                    <td>{{ valor.segundo }}% </td>
+                                    <td>{{ valor.tercero }}%</td>
+                                    <td>{{ valor.cuarto }}% </td>
+                                    <td>{{ valor.total }}% </td>
                                 </tr>
                             </tbody>
                         </table>

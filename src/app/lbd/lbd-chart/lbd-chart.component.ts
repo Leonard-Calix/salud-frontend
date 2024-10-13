@@ -61,8 +61,6 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.chartId = `lbd-chart-${LbdChartComponent.currentId++}`;
-
-    console.log(this.chartId)
   }
 
   public ngAfterViewInit(): void {

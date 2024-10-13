@@ -44,26 +44,18 @@ export class GraphicsService {
     return this.http.post(`${this.baseUrl}/graficos/porcentaje-general-anio`, req, { headers });
   }
 
-  //INICIO NUEVOS GRAFICO
-
-  getGraphicsNew1(req: any) {
+  getGraphicsGeneralDesnutricion(req: any) {
 
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
-    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g2`, req, { headers });
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-general-anio-desnutricion`, req, { headers });
   }
 
-  getGraphicsNew2(req: any) {
+  getGraphicsGeneralFamiliasAtendidas(req: any) {
 
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
-    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g2`, req, { headers });
+    return this.http.post(`${this.baseUrl}/graficos/porcentaje-general-anio-ninos-atendidos`, req, { headers });
   }
-
-  getGraphicsNew3(req: any) {
-
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
-
-    return this.http.post(`${this.baseUrl}/graficos/porcentaje-g3`, req, { headers });
-  }
+  
 }

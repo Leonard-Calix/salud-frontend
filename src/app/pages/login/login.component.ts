@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
         setTimeout(function () {
             // after 1000 ms we add the class animated to the login/register card
             $('.card').removeClass('card-hidden');
-        }, 700)
+        }, 50)
+        
     }
-
- 
 
     public myForm = new FormGroup({
         email: new FormControl('', Validators.required),
@@ -49,7 +48,9 @@ export class LoginComponent implements OnInit {
 
         this.authService.login(email || '', password || '').subscribe({
             next: () => this.router.navigate(['/dashboard']),
-            error: (message) => { Swal.fire('Error', message, 'error') }
+            error: (message) => { 
+                Swal.fire('Error', message, 'error') 
+            }
         });
     }
 }
