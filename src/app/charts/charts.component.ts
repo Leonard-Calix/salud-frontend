@@ -289,7 +289,7 @@ export class ChartsComponent implements OnInit {
           this.pieNinosChartComponent.footerText = 'Consulta exitosa';
 
         } else {
-          this.desnutricionChartData = {
+          this.generoChartData = {
             labels: ['0%', '0%'],
             series: [0, 0]
           };
