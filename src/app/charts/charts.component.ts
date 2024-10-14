@@ -269,10 +269,10 @@ export class ChartsComponent implements OnInit {
 
         let item = {
           label: '% de niñas y niños que reciben tratamiento RUFT',
-          primer: response[0].programadas ? ((response[0].ejecutadas / response[0].programadas) * 100) : 0,
-          segundo: response[1].programadas ? ((response[1].ejecutadas / response[1].programadas) * 100) : 0,
-          tercero: response[2].programadas ? ((response[2].ejecutadas / response[2].programadas) * 100) : 0,
-          cuarto: response[3].programadas ? ((response[3].ejecutadas / response[3].programadas) * 100) : 0,
+          primer: response[0].tratamiento ? (response[0].tratamiento / (response[0].tratamiento + response[0].sinTratamiento) * 100) : 0,
+          segundo: response[1].tratamiento ? (response[1].tratamiento / (response[1].tratamiento + response[1].sinTratamiento) * 100) : 0,
+          tercero: response[2].tratamiento ? (response[2].tratamiento / (response[2].tratamiento + response[2].sinTratamiento) * 100) : 0,
+          cuarto: response[3].tratamiento ? (response[3].tratamiento / (response[3].tratamiento + response[3].sinTratamiento) * 100) : 0,
           total: 0
         }
 
@@ -290,11 +290,11 @@ export class ChartsComponent implements OnInit {
         let response = res.data;
 
         let item = {
-          label: '% niños y niñas de 0-6años atendidos',
-          primer: response[0].programadas ? ((response[0].ejecutadas / response[0].programadas) * 100) : 0,
-          segundo: response[1].programadas ? ((response[1].ejecutadas / response[1].programadas) * 100) : 0,
-          tercero: response[2].programadas ? ((response[2].ejecutadas / response[2].programadas) * 100) : 0,
-          cuarto: response[3].programadas ? ((response[3].ejecutadas / response[3].programadas) * 100) : 0,
+          label: '% niños y niñas de 0-6 años atendidos',
+          primer: response[0].atendidos ? ((response[0].atendidos / response[0].total) * 100) : 0,
+          segundo: response[1].atendidos ? ((response[1].atendidos / response[1].total) * 100) : 0,
+          tercero: response[2].atendidos ? ((response[2].atendidos / response[2].total) * 100) : 0,
+          cuarto: response[3].atendidos ? ((response[3].atendidos / response[3].total) * 100) : 0,
           total: 0
         }
 
@@ -336,16 +336,16 @@ export class ChartsComponent implements OnInit {
 
   getTrimestres(trimestre: string) {
     if (trimestre === '1') {
-      return [this.anio + '-01-01', this.anio +'-04-01']
+      return [this.anio + '-01-01', this.anio + '-04-01']
     }
     if (trimestre === '2') {
-      return [this.anio +'-04-01', this.anio +'-07-01']
+      return [this.anio + '-04-01', this.anio + '-07-01']
     }
     if (trimestre === '3') {
-      return [this.anio +'-07-01', this.anio +'-10-01']
+      return [this.anio + '-07-01', this.anio + '-10-01']
     }
     if (trimestre === '4') {
-      return [this.anio +'-10-01', this.anio +'-12-31']
+      return [this.anio + '-10-01', this.anio + '-12-31']
     }
   }
 
